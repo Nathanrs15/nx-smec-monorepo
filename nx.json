@@ -27,12 +27,25 @@
     ]
   },
   "projects": {
-    "smec": {
-      "tags": []
+    "adminapp": {
+      "tags": ["scope:admin"]
     },
-    "smec-e2e": {
-      "tags": [],
-      "implicitDependencies": ["smec"]
+    "adminapp-e2e": {
+      "tags": ["scope:admin"],
+      "implicitDependencies": ["adminapp"]
+    },
+    "shared-ui": {
+      "tags": ["scope:shared"]
+    },
+    "smecapp": {
+      "tags": ["scope:client"]
+    },
+    "smecapp-e2e": {
+      "tags": ["scope:client"],
+      "implicitDependencies": ["smecapp"]
+    },
+    "smecapp-feature-item": {
+      "tags": ["scope:client"]
     }
   }
 }

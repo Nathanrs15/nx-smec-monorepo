@@ -1,24 +1,40 @@
 {
   "version": 1,
   "projects": {
-    "smec": {
+    "adminapp": {
       "projectType": "application",
-      "root": "apps/smec",
-      "sourceRoot": "apps/smec/src",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "skipTests": true,
+          "skipImport": true
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
+      "root": "apps/adminapp",
+      "sourceRoot": "apps/adminapp/src",
       "prefix": "smec-monorepo",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/apps/smec",
-            "index": "apps/smec/src/index.html",
-            "main": "apps/smec/src/main.ts",
-            "polyfills": "apps/smec/src/polyfills.ts",
-            "tsConfig": "apps/smec/tsconfig.app.json",
+            "outputPath": "dist/apps/adminapp",
+            "index": "apps/adminapp/src/index.html",
+            "main": "apps/adminapp/src/main.ts",
+            "polyfills": "apps/adminapp/src/polyfills.ts",
+            "tsConfig": "apps/adminapp/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["apps/smec/src/favicon.ico", "apps/smec/src/assets"],
-            "styles": ["apps/smec/src/styles.scss"],
+            "assets": [
+              "apps/adminapp/src/favicon.ico",
+              "apps/adminapp/src/assets"
+            ],
+            "styles": ["apps/adminapp/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -37,8 +53,8 @@
               ],
               "fileReplacements": [
                 {
-                  "replace": "apps/smec/src/environments/environment.ts",
-                  "with": "apps/smec/src/environments/environment.prod.ts"
+                  "replace": "apps/adminapp/src/environments/environment.ts",
+                  "with": "apps/adminapp/src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -58,10 +74,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "smec:build:production"
+              "browserTarget": "adminapp:build:production"
             },
             "development": {
-              "browserTarget": "smec:build:development"
+              "browserTarget": "adminapp:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -69,50 +85,217 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "smec:build"
+            "browserTarget": "adminapp:build"
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "apps/smec/src/**/*.ts",
-              "apps/smec/src/**/*.html"
+              "apps/adminapp/src/**/*.ts",
+              "apps/adminapp/src/**/*.html"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/smec"],
+          "outputs": ["coverage/apps/adminapp"],
           "options": {
-            "jestConfig": "apps/smec/jest.config.js",
+            "jestConfig": "apps/adminapp/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "smec-e2e": {
-      "root": "apps/smec-e2e",
-      "sourceRoot": "apps/smec-e2e/src",
+    "adminapp-e2e": {
+      "root": "apps/adminapp-e2e",
+      "sourceRoot": "apps/adminapp-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/smec-e2e/cypress.json",
-            "devServerTarget": "smec:serve:development",
-            "tsConfig": "apps/smec-e2e/tsconfig.json"
+            "cypressConfig": "apps/adminapp-e2e/cypress.json",
+            "devServerTarget": "adminapp:serve:development"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "smec:serve:production"
+              "devServerTarget": "adminapp:serve:production"
             }
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/smec-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": ["apps/adminapp-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "shared-ui": {
+      "projectType": "library",
+      "root": "libs/shared/ui",
+      "sourceRoot": "libs/shared/ui/src",
+      "prefix": "smec-monorepo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/ui"],
+          "options": {
+            "jestConfig": "libs/shared/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/ui/src/**/*.ts",
+              "libs/shared/ui/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "smecapp": {
+      "projectType": "application",
+      "root": "apps/smecapp",
+      "sourceRoot": "apps/smecapp/src",
+      "prefix": "smec-monorepo",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/smecapp",
+            "index": "apps/smecapp/src/index.html",
+            "main": "apps/smecapp/src/main.ts",
+            "polyfills": "apps/smecapp/src/polyfills.ts",
+            "tsConfig": "apps/smecapp/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/smecapp/src/favicon.ico",
+              "apps/smecapp/src/assets"
+            ],
+            "styles": ["apps/smecapp/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/smecapp/src/environments/environment.ts",
+                  "with": "apps/smecapp/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "smecapp:build:production"
+            },
+            "development": {
+              "browserTarget": "smecapp:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "smecapp:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/smecapp/src/**/*.ts",
+              "apps/smecapp/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/smecapp"],
+          "options": {
+            "jestConfig": "apps/smecapp/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "smecapp-e2e": {
+      "root": "apps/smecapp-e2e",
+      "sourceRoot": "apps/smecapp-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/smecapp-e2e/cypress.json",
+            "devServerTarget": "smecapp:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "smecapp:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/smecapp-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "smecapp-feature-item": {
+      "projectType": "library",
+      "root": "libs/smecapp/feature-item",
+      "sourceRoot": "libs/smecapp/feature-item/src",
+      "prefix": "smec-monorepo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/smecapp/feature-item"],
+          "options": {
+            "jestConfig": "libs/smecapp/feature-item/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/smecapp/feature-item/src/**/*.ts",
+              "libs/smecapp/feature-item/src/**/*.html"
+            ]
           }
         }
       }

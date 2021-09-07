@@ -14,7 +14,16 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@smec-monorepo/feature-request-product": [
+        "libs/feature-request-product/src/index.ts"
+      ],
+      "@smec-monorepo/libs\\shared": ["libs/libs\\shared/src/index.ts"],
+      "@smec-monorepo/shared-ui": ["libs/shared/ui/src/index.ts"],
+      "@smec-monorepo/smecapp/feature-item": [
+        "libs/smecapp/feature-item/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
