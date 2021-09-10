@@ -15,14 +15,17 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@smec-monorepo/feature-request-product": [
-        "libs/feature-request-product/src/index.ts"
+      "@smec-monorepo/shared/ui": ["libs/shared/ui/src/index.ts"],
+      "@smec-monorepo/users/feature-user-detail": [
+        "libs/users/feature-user-detail/src/index.ts"
       ],
-      "@smec-monorepo/libs\\shared": ["libs/libs\\shared/src/index.ts"],
-      "@smec-monorepo/shared-ui": ["libs/shared/ui/src/index.ts"],
-      "@smec-monorepo/smecapp/feature-item": [
-        "libs/smecapp/feature-item/src/index.ts"
-      ]
+      "@smec-monorepo/users/feature-users-list": [
+        "libs/users/feature-users-list/src/index.ts"
+      ],
+      "@smec-monorepo/users/shell-mobile": [
+        "libs/users/shell-mobile/src/index.ts"
+      ],
+      "@smec-monorepo/users/shell-web": ["libs/users/shell-web/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

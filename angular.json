@@ -3,19 +3,6 @@
   "projects": {
     "adminapp": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss",
-          "skipTests": true,
-          "skipImport": true
-        },
-        "@schematics/angular:application": {
-          "strict": true
-        },
-        "@schematics/angular:service": {
-          "skipTests": true
-        }
-      },
       "root": "apps/adminapp",
       "sourceRoot": "apps/adminapp/src",
       "prefix": "smec-monorepo",
@@ -35,6 +22,9 @@
               "apps/adminapp/src/assets"
             ],
             "styles": ["apps/adminapp/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/shared/ui/src/lib"]
+            },
             "scripts": []
           },
           "configurations": {
@@ -275,17 +265,17 @@
         }
       }
     },
-    "smecapp-feature-item": {
+    "users-feature-user-detail": {
       "projectType": "library",
-      "root": "libs/smecapp/feature-item",
-      "sourceRoot": "libs/smecapp/feature-item/src",
+      "root": "libs/users/feature-user-detail",
+      "sourceRoot": "libs/users/feature-user-detail/src",
       "prefix": "smec-monorepo",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/smecapp/feature-item"],
+          "outputs": ["coverage/libs/users/feature-user-detail"],
           "options": {
-            "jestConfig": "libs/smecapp/feature-item/jest.config.js",
+            "jestConfig": "libs/users/feature-user-detail/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -293,8 +283,83 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/smecapp/feature-item/src/**/*.ts",
-              "libs/smecapp/feature-item/src/**/*.html"
+              "libs/users/feature-user-detail/src/**/*.ts",
+              "libs/users/feature-user-detail/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "users-feature-users-list": {
+      "projectType": "library",
+      "root": "libs/users/feature-users-list",
+      "sourceRoot": "libs/users/feature-users-list/src",
+      "prefix": "smec-monorepo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/users/feature-users-list"],
+          "options": {
+            "jestConfig": "libs/users/feature-users-list/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/users/feature-users-list/src/**/*.ts",
+              "libs/users/feature-users-list/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "users-shell-mobile": {
+      "projectType": "library",
+      "root": "libs/users/shell-mobile",
+      "sourceRoot": "libs/users/shell-mobile/src",
+      "prefix": "smec-monorepo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/users/shell-mobile"],
+          "options": {
+            "jestConfig": "libs/users/shell-mobile/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/users/shell-mobile/src/**/*.ts",
+              "libs/users/shell-mobile/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "users-shell-web": {
+      "projectType": "library",
+      "root": "libs/users/shell-web",
+      "sourceRoot": "libs/users/shell-web/src",
+      "prefix": "smec-monorepo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/users/shell-web"],
+          "options": {
+            "jestConfig": "libs/users/shell-web/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/users/shell-web/src/**/*.ts",
+              "libs/users/shell-web/src/**/*.html"
             ]
           }
         }
@@ -302,6 +367,7 @@
     }
   },
   "cli": {
+    "analytics": false,
     "defaultCollection": "@nrwl/angular",
     "packageManager": "npm"
   },
@@ -330,6 +396,17 @@
     },
     "@nrwl/angular:component": {
       "style": "scss"
+    },
+    "@schematics/angular:component": {
+      "style": "scss",
+      "skipTests": true,
+      "skipImport": true
+    },
+    "@schematics/angular:application": {
+      "strict": true
+    },
+    "@schematics/angular:service": {
+      "skipTests": true
     }
   },
   "defaultProject": "smec"

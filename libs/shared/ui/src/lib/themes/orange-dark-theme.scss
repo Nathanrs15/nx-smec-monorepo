@@ -1,0 +1,30 @@
+@use '~@angular/material' as mat;
+
+$mat-primary-scheme: (
+  100: #fad7ba,
+  500: #e87210,
+  700: #c16316,
+  contrast: (
+    100: rgba(0, 0, 0, 0.87),
+    500: #ffffff,
+    700: #ffffff,
+  ),
+);
+// $mat-accent-scheme: (
+//   100: #cfd8dc,
+//   500: #b0bec5,
+//   contrast: (
+//     100: rgba(0, 0, 0, 0.87),
+//     500: rgba(0, 0, 0, 0.87),
+//     700: #ffffff,
+//   ),
+// );
+
+$mat-primary-palette: mat.define-palette($mat-primary-scheme);
+$mat-accent-palette: mat.define-palette(mat.$brown-palette, 500);
+
+$anms-orange-dark-theme: mat.define-dark-theme(
+  $mat-primary-palette,
+  $mat-accent-palette
+);
+

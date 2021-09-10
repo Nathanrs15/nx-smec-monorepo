@@ -44,8 +44,17 @@
       "tags": ["scope:client"],
       "implicitDependencies": ["smecapp"]
     },
-    "smecapp-feature-item": {
-      "tags": ["scope:client"]
+    "users-feature-user-detail": {
+      "tags": ["scope:admin"]
+    },
+    "users-feature-users-list": {
+      "tags": ["scope:admin"]
+    },
+    "users-shell-mobile": {
+      "tags": ["scope:admin"]
+    },
+    "users-shell-web": {
+      "tags": ["scope:admin"]
     }
   }
 }
