@@ -14,7 +14,12 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ]
       }
     }
   },
@@ -28,33 +33,76 @@
   },
   "projects": {
     "adminapp": {
-      "tags": ["scope:admin"]
+      "tags": [
+        "scope:admin"
+      ]
     },
     "adminapp-e2e": {
-      "tags": ["scope:admin"],
-      "implicitDependencies": ["adminapp"]
+      "tags": [
+        "scope:admin"
+      ],
+      "implicitDependencies": [
+        "adminapp"
+      ]
+    },
+    "shared-data-access": {
+      "tags": [
+        "scope:shared"
+      ]
+    },
+    "shared-environments": {
+      "tags": [
+        "scope:shared"
+      ]
+    },
+    "shared-login": {
+      "tags": []
+    },
+    "shared-models": {
+      "tags": [
+        "scope:shared"
+      ]
     },
     "shared-ui": {
-      "tags": ["scope:shared"]
+      "tags": [
+        "scope:shared"
+      ]
+    },
+    "shared-utils": {
+      "tags": []
     },
     "smecapp": {
-      "tags": ["scope:client"]
+      "tags": [
+        "scope:client"
+      ]
     },
     "smecapp-e2e": {
-      "tags": ["scope:client"],
-      "implicitDependencies": ["smecapp"]
+      "tags": [
+        "scope:client"
+      ],
+      "implicitDependencies": [
+        "smecapp"
+      ]
     },
     "users-feature-user-detail": {
-      "tags": ["scope:admin"]
+      "tags": [
+        "scope:client"
+      ]
     },
     "users-feature-users-list": {
-      "tags": ["scope:admin"]
+      "tags": [
+        "scope:client"
+      ]
     },
     "users-shell-mobile": {
-      "tags": ["scope:admin"]
+      "tags": [
+        "scope:client"
+      ]
     },
     "users-shell-web": {
-      "tags": ["scope:admin"]
+      "tags": [
+        "scope:client"
+      ]
     }
   }
 }

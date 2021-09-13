@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-sidenav {
+  width: 250px;
+}
+
+.filter-sidenav {
+  width: 320px;
+}
+
+mat-sidenav-container {
+  height: 100%;
+}
+
+.loader-container {
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+}
+
+.custom-toolbar {
+  z-index: 2; /* Ensure that your app's content doesn't overlap the toolbar */
+}

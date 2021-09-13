@@ -1,0 +1,56 @@
+@use '~@angular/material' as mat;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  outline: none;
+  width: 100%;
+
+  // &:hover,
+  // &:focus {
+  //   > .mat-list-item:not(.expanded) {
+  //     background-color: rgba(0, 0, 0, 0.2) !important;
+  //   }
+  // }
+}
+
+.custom-list.mat-list-item {
+  padding: 0;
+  display: flex;
+  width: auto;
+
+  .routeIcon {
+    margin-right: 40px;
+  }
+
+  .mat-list-item-content {
+    width: 100vh !important;
+  }
+}
+
+// .mat-list-item:is(.child) {
+//   background-color: green; // #fafafa; // rgba(0, 0, 0, 0.1);
+// }
+.mat-list-item:is(.expanded) {
+  background-color: #fafafa; // rgba(0, 0, 0, 0.1);
+}
+
+@mixin anms-sidebar-component-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  .custom-list.mat-list-item {
+    &:hover,
+    &:focus {
+      background-color: mat.get-color-from-palette(
+        $primary,
+        lighter
+      ) !important;
+    }
+  }
+
+  .custom-list.mat-list-item.active {
+    color: mat.get-color-from-palette($primary, darker) !important;
+    background-color: mat.get-color-from-palette($primary, lighter) !important;
+  }
+}

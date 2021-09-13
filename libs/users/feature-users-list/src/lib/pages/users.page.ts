@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 @Component({
   template: `
     USERS PAGE
-    <app-user-list></app-user-list>
+    <smec-monorepo-user-list></smec-monorepo-user-list>
     <!-- <ng-container *ngIf="UIState$ | async as state">
       <ng-container *ngIf="state === UIStates.empty">
         <div class="wrapper">
@@ -69,7 +69,7 @@ import { Observable } from 'rxjs';
                     <mat-label>Buscar</mat-label>
                     <input matInput placeholder="Ej. Administrador" #input />
                   </mat-form-field>
-                  <app-user-list [users]="users"></app-user-list>
+                  <smec-monorepo-user-list [users]="users"></smec-monorepo-user-list>
 
                   <div class="fab-container">
                     <button
@@ -112,7 +112,7 @@ import { Observable } from 'rxjs';
                     </div>
                   </mat-card>
                   <mat-card class="table-card">
-                    <app-user-list [users]="users"></app-user-list>
+                    <smec-monorepo-user-list [users]="users"></smec-monorepo-user-list>
                   </mat-card>
                 </ng-template>
               </div>
@@ -141,17 +141,16 @@ export class UsersPage implements OnInit {
 
   // UIStates = UIStatus;
 
-  emptyEstate = {
-    title: 'No se han encontrado usuarios',
-    description: 'Puedes añadir nuevos usuarios a continuación.',
-  };
+  // emptyEstate = {
+  //   title: 'No se han encontrado usuarios',
+  //   description: 'Puedes añadir nuevos usuarios a continuación.',
+  // };
   // breakpoint$ = this.gridService.mobileBreakpoint$;
-
-  constructor() {} // private toggleService: UtilsService // private gridService: GridBreakpointService, // private userService: UserService,
+  // private toggleService: UtilsService // private gridService: GridBreakpointService, // private userService: UserService,
+  // constructor() {}
 
   ngOnInit(): void {
-    // this.UIState$ = this.userService.UIState$;
-    // this.users$ = this.userService.getAllUsers();
+    console.log('UsersPage');
   }
 
   toggle() {

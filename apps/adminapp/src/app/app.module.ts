@@ -24,7 +24,6 @@ const routes: Routes = [
       },
     ],
   },
-
   { path: '**', redirectTo: 'app/users-list', pathMatch: 'full' },
 ];
 

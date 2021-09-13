@@ -1,0 +1,50 @@
+<ng-template [ngxPermissionsOnly]="item.permission ? item.permission : ''">
+  <ng-container *ngIf="!item.children; else flat">
+    <a
+      mat-list-item
+      class="custom-list"
+      [routerLink]="item.route"
+      routerLinkActive="active"
+      [ngStyle]="{ 'padding-left': depth * 12 + 'px' }"
+      [ngClass]="{
+        expanded: expanded,
+        child: item.isChild ? true : false
+      }"
+    >
+      {{ item.displayName }}
+    </a>
+  </ng-container>
+
+  <ng-template #flat>
+    <a
+      mat-list-item
+      class="custom-list"
+      (click)="onItemSelected(item)"
+      [ngStyle]="{ 'padding-left': depth * 12 + 'px' }"
+      [ngClass]="{
+        expanded: expanded,
+        child: item.isChild ? true : false
+      }"
+    >
+      <mat-icon class="routeIcon" *ngIf="item.iconName">{{
+        item.iconName
+      }}</mat-icon>
+      {{ item.displayName }}
+      <span fxFlex *ngIf="item.children && item.children.length">
+        <span fxFlex></span>
+        <mat-icon [@indicatorRotate]="expanded ? 'expanded' : 'collapsed'">
+          expand_more
+        </mat-icon>
+      </span>
+    </a>
+  </ng-template>
+
+  <div *ngIf="expanded">
+    <app-sidebar
+      *ngFor="let child of item.children"
+      [item]="child"
+      [depth]="depth + 1"
+    >
+    </app-sidebar>
+  </div>
+</ng-template>

@@ -15,7 +15,16 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@smec-monorepo/shared/data-access": [
+        "libs/shared/data-access/src/index.ts"
+      ],
+      "@smec-monorepo/shared/environments": [
+        "libs/shared/environments/src/index.ts"
+      ],
+      "@smec-monorepo/shared/login": ["libs/shared/login/src/index.ts"],
+      "@smec-monorepo/shared/models": ["libs/shared/models/src/index.ts"],
       "@smec-monorepo/shared/ui": ["libs/shared/ui/src/index.ts"],
+      "@smec-monorepo/shared/utils": ["libs/shared/utils/src/index.ts"],
       "@smec-monorepo/users/feature-user-detail": [
         "libs/users/feature-user-detail/src/index.ts"
       ],

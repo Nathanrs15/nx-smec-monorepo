@@ -1,0 +1,39 @@
+.form-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+
+  .avatar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .avatar app-undraw-avatar svg {
+    width: 200px;
+  }
+
+  .form-header {
+    margin-top: 2em;
+    margin-bottom: 3em;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .avatar img {
+    width: 180px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .avatar img {
+    width: 160px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .avatar img {
+    display: none;
+  }
+}

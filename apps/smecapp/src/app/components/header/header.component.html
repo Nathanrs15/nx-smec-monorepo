@@ -1,0 +1,61 @@
+<mat-toolbar color="primary" class="mat-elevation-z5" style="z-index: 2">
+  <mat-toolbar-row>
+    <div fxFlex fxLayout="row" fxLayoutAlign="start center">
+      <div class="toolbar-title">
+        <!-- <img [src]="logo" alt="" /> -->
+      </div>
+      SMEC
+    </div>
+
+    <!-- <button mat-button>
+      <mat-icon svgIcon="logo-sige"></mat-icon>
+      SMEC
+    </button> -->
+    <!-- NG-APP -->
+
+    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+      <ul fxLayout="row" fxLayoutGap="20px">
+        <li>
+          <!-- <app-notifications></app-notifications> -->
+        </li>
+        <li>
+          <button
+            mat-icon-button
+            matTooltip="Ajustes!"
+            (click)="openSnackbar()"
+          >
+            <mat-icon>settings</mat-icon>
+          </button>
+        </li>
+        <li>
+          <button mat-icon-button>
+            <mat-icon>help_outline</mat-icon>
+          </button>
+        </li>
+        <li>
+          <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon>person_outline</mat-icon>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-toolbar color="primary" style="z-index: 1 !important; padding-left: 0">
+  <button mat-icon-button class="sidenav-toggle" (click)="toggleSideBar()">
+    <mat-icon>menu_open</mat-icon>
+  </button>
+  <h1>{{ title }}</h1>
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="./profile">
+    <mat-icon>account_circle</mat-icon>
+    Profile
+  </button>
+  <button mat-menu-item routerLink="/login" (click)="logout()">
+    <mat-icon>exit_to_app</mat-icon>
+    Sign out
+  </button>
+</mat-menu>
