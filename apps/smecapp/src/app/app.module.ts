@@ -1,75 +1,47 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
-import { NgxPermissionsModule } from 'ngx-permissions';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { DefaultLayoutComponent } from './layout';
+import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import {
-  HeaderComponent,
-  ProgressBarComponent,
-  SidebarComponent,
-} from './components';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule } from '@angular/material/button';
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+  MomentDateAdapter,
+} from '@angular/material-moment-adapter';
 
-const MATERIAL = [
-  MatSidenavModule,
-  MatProgressBarModule,
-  MatListModule,
-  MatIconModule,
-  MatMenuModule,
-  MatToolbarModule,
-  FlexLayoutModule,
-  MatButtonModule,
-];
+import { SharedUiModule } from '@smec-monorepo/shared/ui';
 
-const COMPONENTS = [HeaderComponent, ProgressBarComponent, SidebarComponent];
+import { AuthInterceptor } from '@smec-monorepo/shared/interceptors';
+import { AppRoutingModule } from './app-routing.module';
 
-const LAYOUTS = [DefaultLayoutComponent];
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
-const routes: Routes = [
+const PROVIDERS = [
+  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  { provide: MAT_DATE_LOCALE, useValue: 'es' },
   {
-    path: 'login',
-    loadChildren: () =>
-      import('@smec-monorepo/shared/login').then((m) => m.SharedLoginModule),
+    provide: DateAdapter,
+    useClass: MomentDateAdapter,
+    deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
   },
-  {
-    path: 'app',
-    component: DefaultLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: () =>
-          import('@smec-monorepo/users/shell-web').then(
-            (m) => m.UsersShellWebModule
-          ),
-      },
-    ],
-  },
-  { path: '**', redirectTo: 'app', pathMatch: 'full' },
+  { provide: LOCALE_ID, useValue: 'es' },
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...COMPONENTS, ...LAYOUTS],
+  declarations: [AppComponent],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes),
-    NgxPermissionsModule.forRoot(),
-    ...MATERIAL,
+    SharedUiModule,
+    MatSnackBarModule,
+    MatDialogModule,
   ],
-  providers: [],
+  providers: [...PROVIDERS],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

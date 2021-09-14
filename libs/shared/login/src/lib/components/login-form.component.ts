@@ -14,8 +14,7 @@ import { AuthenticationService } from '@smec-monorepo/shared/data-access';
   template: `
     <div class="form-container" fxLayout="column">
       <div class="avatar">
-        <!-- <img [src]="avatar" /> -->
-        <!-- <app-undraw-avatar [width]="200" [height]="200"></app-undraw-avatar> -->
+        <app-undraw-avatar [width]="200" [height]="200"></app-undraw-avatar>
       </div>
       <div class="form-header">
         <h1 class="login-text">Welcome back!</h1>

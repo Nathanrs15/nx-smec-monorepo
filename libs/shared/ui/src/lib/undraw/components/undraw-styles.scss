@@ -1,0 +1,9 @@
+@use '~@angular/material' as mat;
+
+@mixin anms-avatar-component-theme($theme) {
+  $primary: map-get($theme, primary);
+
+  #avatar-background {
+    fill: mat.get-color-from-palette($primary);
+  }
+}

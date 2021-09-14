@@ -1,0 +1,339 @@
+@use '~@angular/material' as mat;
+@include mat.core();
+
+@import 'styles-reset.scss';
+@import 'styles-variables.scss';
+@import 'styles-reset.scss-theme.scss';
+@import 'responsive-table.scss';
+
+@import './themes/default-theme.scss';
+@import './themes/light-theme.scss';
+@import './themes/black-theme.scss';
+@import './themes/nature-theme.scss';
+@import './themes/orange-dark-theme.scss';
+@import './themes/orange-light-theme.scss';
+
+@import '../undraw/components/undraw-styles.scss';
+@import '../../../../login/src/lib/pages/pages-styles.scss';
+
+@mixin custom-components-theme($theme) {
+  @include anms-styles-reset-theme($theme);
+  @include anms-avatar-component-theme($theme);
+  @include anms-login-page-theme($theme);
+}
+
+.default-theme {
+  @include custom-components-theme($anms-theme);
+  @include mat.all-component-themes($anms-theme);
+}
+.light-theme {
+  @include mat.all-component-themes($anms-light-theme);
+  @include custom-components-theme($anms-light-theme);
+}
+
+.nature-theme {
+  @include mat.all-component-themes($anms-nature-theme);
+  @include custom-components-theme($anms-nature-theme);
+}
+
+.orange-light-theme {
+  @include mat.all-component-themes($anms-orange-light-theme);
+  @include custom-components-theme($anms-orange-light-theme);
+}
+
+.orange-dark-theme {
+  @include mat.all-component-themes($anms-orange-dark-theme);
+  @include custom-components-theme($anms-orange-dark-theme);
+
+  mat-card {
+    border: 0.5px solid hsla(0, 0%, 100%, 0.2);
+  }
+}
+
+.black-theme {
+  @include mat.all-component-themes($anms-black-theme);
+  @include custom-components-theme($anms-black-theme);
+}
+
+// :root {
+//   color-scheme: dark;
+// }
+
+mat-card {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+mat-grid-tile {
+  mat-card {
+    width: calc(100% - 70px);
+    height: calc(100% - 70px);
+  }
+}
+
+mat-card {
+  margin-top: 2em;
+  box-shadow: none !important;
+
+  mat-card-content {
+    margin-top: 20px;
+  }
+}
+
+.custom-panel.mat-menu-panel {
+  max-width: none;
+  width: 450px;
+  padding: 0 12px 0 12px;
+}
+
+html,
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.grid-container {
+  margin: 20px;
+  max-height: 100%;
+}
+
+.grid-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  width: 100%;
+  height: 100%;
+}
+
+mat-toolbar {
+  position: relative;
+  z-index: 2 !important;
+}
+
+.table-card.mat-card {
+  padding: 0;
+}
+
+.custom-toolbar {
+  z-index: 3 !important;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.header {
+  margin-bottom: 16px;
+}
+
+.mat-tab-body-wrapper {
+  flex-grow: 1;
+}
+
+.custom-form {
+  max-width: 500px;
+  margin: 20px;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.form-submit-section {
+  margin-top: 1em;
+
+  button {
+    margin-right: 2em;
+  }
+}
+
+.dialog-header,
+.dialog-message {
+  text-transform: lowercase;
+}
+.dialog-header::first-letter,
+.dialog-message::first-letter {
+  text-transform: uppercase;
+}
+
+.mat-tab-nav-bar {
+  margin-bottom: 20px;
+}
+
+.chart-container {
+  width: 100%;
+  height: 550px;
+}
+
+.stats-cards {
+  .mat-card {
+    overflow: hidden;
+    width: 100%;
+  }
+}
+
+/* Success syling */
+
+.mat-button.mat-success,
+.mat-stroked-button.mat-success {
+  color: #12b438;
+}
+.mat-button.mat-success:hover,
+.mat-stroked-button.mat-success:hover {
+  background-color: #f0fff3;
+}
+
+.mat-raised-button.mat-success,
+.mat-flat-button.mat-success,
+.mat-fab.mat-success,
+.mat-mini-fab.mat-success,
+.mat-list-icon.mat-success {
+  color: #f0fff3;
+  background-color: #12b438;
+}
+
+.mat-icon-button.mat-success {
+  color: #12b438;
+}
+
+/* Error syling */
+
+.mat-button.mat-error,
+.mat-stroked-button.mat-error,
+.mat-list-icon.mat-error {
+  color: red;
+}
+.mat-button.mat-error:hover,
+.mat-stroked-button.mat-error:hover {
+  background-color: #f0fff3;
+}
+
+.mat-raised-button.mat-error,
+.mat-flat-button.mat-error,
+.mat-fab.mat-error,
+.mat-mini-fab.mat-error {
+  color: #f0fff3;
+  background-color: red;
+}
+
+.mat-icon-button.mat-error {
+  color: red;
+}
+
+.mat-error {
+  display: inline-block !important;
+}
+
+/* Warn syling */
+
+.mat-button.mat-warn,
+.mat-stroked-button.mat-warn,
+.mat-list-icon.mat-warn {
+  color: #ffcc00 !important;
+}
+.mat-button.mat-warn:hover,
+.mat-stroked-button.mat-warn:hover {
+  background-color: #f0fff3 !important;
+}
+
+.mat-raised-button.mat-warn,
+.mat-flat-button.mat-warn,
+.mat-fab.mat-warn,
+.mat-mini-fab.mat-warn {
+  color: #f0fff3 !important;
+  background-color: #ffcc00 !important;
+}
+
+.mat-icon-button.mat-warn {
+  color: #ffcc00 !important;
+}
+
+ul li {
+  list-style: none;
+}
+
+.filter-card {
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+}
+
+h2.view-title {
+  margin: 50px 0 16px !important;
+}
+
+.fab-container {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.fab-toggler {
+  float: right;
+  z-index: 100;
+}
+
+// * { background-color: rgba(255,0,0,.2); }
+// * * { background-color: rgba(0,255,0,.2); }
+// * * * { background-color: rgba(0,0,255,.2); }
+// * * * * { background-color: rgba(255,0,255,.2); }
+// * * * * * { background-color: rgba(0,255,255,.2); }
+// * * * * * * { background-color: rgba(255,255,0,.2); }
+// * * * * * * * { background-color: rgba(255,0,0,.2); }
+// * * * * * * * * { background-color: rgba(0,255,0,.2); }
+// * * * * * * * * * { background-color: rgba(0,0,255,.2); }
+
+// .custom-scroll {
+/* width */
+::-webkit-scrollbar {
+  background-color: #fff;
+  width: 16px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: #babac0;
+  border-radius: 16px;
+  border: 5px solid #fff;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a0a0a5;
+  border: 4px solid #f4f4f4;
+}
+// }
+
+.wrapper {
+  display: grid;
+  place-items: center;
+  height: calc(100vh - 300px);
+}
+.inner {
+  padding: 12px;
+}
+
+// mat-drawer {
+//   width: 320px !important;
+// }
+
+mat-drawer-container {
+  position: absolute !important;
+  top: 0;
+  width: 100%;
+  bottom: 0;
+}
+.mat-table tr.mat-row:hover {
+  background-color: #ece8e8;
+}

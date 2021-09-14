@@ -6,6 +6,7 @@ import {
   ElementRef,
   OnDestroy,
   ChangeDetectorRef,
+  OnInit,
 } from '@angular/core';
 
 import { MatDrawer } from '@angular/material/sidenav';
@@ -30,10 +31,12 @@ import { NavItem } from '@smec-monorepo/shared/models';
 @Component({
   selector: 'smec-monorepo-default-layout',
   templateUrl: './default-layout.component.html',
-  styleUrls: ['./default-layout.component.css'],
+  styleUrls: ['./default-layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DefaultLayoutComponent implements AfterViewInit, OnDestroy {
+export class DefaultLayoutComponent
+  implements AfterViewInit, OnDestroy
+{
   sideBarOpen = true;
   @ViewChild('drawer') appDrawer!: ElementRef;
   @ViewChild('filter', { static: true }) appFilter!: MatDrawer;
@@ -50,7 +53,7 @@ export class DefaultLayoutComponent implements AfterViewInit, OnDestroy {
   mobileQuery!: MediaQueryList;
   private _mobileQueryListener!: () => void;
 
-  navItems: NavItem[] = this.navService.navItems;
+  navItems$!: Observable<NavItem[]>;
   title$ = this.titleService.title$;
 
   constructor(
@@ -67,6 +70,8 @@ export class DefaultLayoutComponent implements AfterViewInit, OnDestroy {
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
+  // ngOnInit() {}
+
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
   }
@@ -81,6 +86,12 @@ export class DefaultLayoutComponent implements AfterViewInit, OnDestroy {
       console.log(res, this.appDrawer);
       this.appFilter.toggle();
     });
+
+    console.log('Loading navItems ...');
+
+    this.navItems$ = this.navService.navItems$;
+
+    this.navItems$.subscribe(data => console.log(data))
   }
 
   trackByFn(index: number, item: any) {

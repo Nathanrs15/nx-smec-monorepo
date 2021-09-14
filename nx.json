@@ -14,12 +14,7 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ]
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
       }
     }
   },
@@ -33,76 +28,69 @@
   },
   "projects": {
     "adminapp": {
-      "tags": [
-        "scope:admin"
-      ]
+      "tags": ["scope:admin"]
     },
     "adminapp-e2e": {
-      "tags": [
-        "scope:admin"
-      ],
-      "implicitDependencies": [
-        "adminapp"
-      ]
+      "tags": ["scope:admin"],
+      "implicitDependencies": ["adminapp"]
+    },
+    "profile-feature-profile-edit": {
+      "tags": ["scope:client"]
+    },
+    "profile-shell-mobile": {
+      "tags": ["scope:client"]
+    },
+    "profile-shell-web": {
+      "tags": ["scope:client"]
     },
     "shared-data-access": {
-      "tags": [
-        "scope:shared"
-      ]
+      "tags": ["scope:shared"]
     },
     "shared-environments": {
-      "tags": [
-        "scope:shared"
-      ]
+      "tags": ["scope:shared"]
+    },
+    "shared-guards": {
+      "tags": ["scope:shared"]
+    },
+    "shared-interceptors": {
+      "tags": ["scope:shared"]
     },
     "shared-login": {
-      "tags": []
+      "tags": ["scope:shared"]
     },
     "shared-models": {
-      "tags": [
-        "scope:shared"
-      ]
+      "tags": ["scope:shared"]
     },
     "shared-ui": {
-      "tags": [
-        "scope:shared"
-      ]
+      "tags": ["scope:shared"]
     },
     "shared-utils": {
-      "tags": []
+      "tags": ["scope:shared"]
     },
     "smecapp": {
-      "tags": [
-        "scope:client"
-      ]
+      "tags": ["scope:client"]
     },
     "smecapp-e2e": {
-      "tags": [
-        "scope:client"
-      ],
-      "implicitDependencies": [
-        "smecapp"
-      ]
+      "tags": ["scope:client"],
+      "implicitDependencies": ["smecapp"]
+    },
+    "users-data-access": {
+      "tags": ["scope:admin", "scope:client"]
+    },
+    "users-feature-user-add": {
+      "tags": []
     },
     "users-feature-user-detail": {
-      "tags": [
-        "scope:client"
-      ]
+      "tags": ["scope:admin", "scope:client"]
     },
     "users-feature-users-list": {
-      "tags": [
-        "scope:client"
-      ]
+      "tags": ["scope:admin", "scope:client"]
     },
     "users-shell-mobile": {
-      "tags": [
-        "scope:client"
-      ]
+      "tags": ["scope:admin", "scope:client"]
     },
     "users-shell-web": {
-      "tags": [
-        "scope:client"
-      ]
+      "tags": ["scope:admin", "scope:client"]
     }
   }
 }

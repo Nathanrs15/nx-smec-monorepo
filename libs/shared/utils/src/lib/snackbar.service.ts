@@ -17,7 +17,7 @@ export class SnackbarService {
   openSnackBar(message: string, action: string) {
     const panelTheme = localStorage.getItem('theme');
 
-    console.log('panel theme:', panelTheme);
+    // console.log('panel theme:', panelTheme);
 
     this._snackBar.open(message, action, {
       horizontalPosition: this.horizontalPosition,

@@ -17,6 +17,13 @@ const routes: Routes = [
         (m) => m.UsersFeatureUserDetailModule
       ),
   },
+  {
+    path: 'add-user',
+    loadChildren: () =>
+      import('@smec-monorepo/users/feature-user-add').then(
+        (m) => m.UsersFeatureUserAddModule
+      ),
+  },
   { path: '', redirectTo: '', pathMatch: 'full' },
 ];
 

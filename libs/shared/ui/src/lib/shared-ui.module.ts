@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { NgxPermissionsModule } from 'ngx-permissions';
+
 import {
   ConfirmationDialogComponent,
   HeaderComponent,
@@ -16,6 +19,14 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { RouterModule } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
+import {
+  CustomEmptyStateComponent,
+  UndrawAvatarComponent,
+  UndrawEmptyStateComponent,
+  UndrawSettingsComponent,
+} from './undraw/components';
 
 const MATERIAL = [
   MatSidenavModule,
@@ -24,15 +35,31 @@ const MATERIAL = [
   MatIconModule,
   MatMenuModule,
   MatToolbarModule,
+  FlexLayoutModule,
+  MatButtonModule,
 ];
 
-const COMPONENTS = [HeaderComponent, ProgressBarComponent, SidebarComponent];
+const COMPONENTS = [
+  HeaderComponent,
+  ProgressBarComponent,
+  SidebarComponent,
+  UndrawAvatarComponent,
+  UndrawSettingsComponent,
+  UndrawEmptyStateComponent,
+  CustomEmptyStateComponent,
+  ConfirmationDialogComponent,
+];
 
 const LAYOUTS = [DefaultLayoutComponent];
 
 @NgModule({
-  imports: [CommonModule, RouterModule, ...MATERIAL],
-  declarations: [ConfirmationDialogComponent, ...COMPONENTS, ...LAYOUTS],
-  exports: [ConfirmationDialogComponent, ...COMPONENTS, ...LAYOUTS],
+  imports: [
+    CommonModule,
+    RouterModule,
+    NgxPermissionsModule.forRoot(),
+    ...MATERIAL,
+  ],
+  declarations: [...COMPONENTS, ...LAYOUTS],
+  exports: [...COMPONENTS, ...LAYOUTS],
 })
 export class SharedUiModule {}

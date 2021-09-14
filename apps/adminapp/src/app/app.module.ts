@@ -1,36 +1,46 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
+import {
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+  MomentDateAdapter,
+} from '@angular/material-moment-adapter';
 
 import { AppComponent } from './app.component';
-import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [
+import { AuthInterceptor } from '@smec-monorepo/shared/interceptors';
+
+import { SharedUiModule } from '@smec-monorepo/shared/ui';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AppRoutingModule } from './app-routing.module';
+
+const PROVIDERS = [
+  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  { provide: MAT_DATE_LOCALE, useValue: 'es' },
   {
-    path: 'app',
-    children: [
-      {
-        path: 'users-list',
-        loadChildren: () =>
-          import('@smec-monorepo/users/shell-web').then(
-            (m) => m.UsersShellWebModule
-          ),
-      },
-      {
-        path: 'user-detail',
-        loadChildren: () =>
-          import('@smec-monorepo/users/shell-web').then(
-            (m) => m.UsersShellWebModule
-          ),
-      },
-    ],
+    provide: DateAdapter,
+    useClass: MomentDateAdapter,
+    deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
   },
-  { path: '**', redirectTo: 'app/users-list', pathMatch: 'full' },
+  { provide: LOCALE_ID, useValue: 'es' },
 ];
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, RouterModule.forRoot(routes)],
-  providers: [],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    SharedUiModule,
+    MatSnackBarModule,
+    MatDialogModule,
+  ],
+  providers: [...PROVIDERS],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

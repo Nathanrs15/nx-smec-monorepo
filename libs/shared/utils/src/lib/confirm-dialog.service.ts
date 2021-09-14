@@ -2,26 +2,27 @@ import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Confirmation } from '@smec-monorepo/shared/models';
 import { Observable } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
+import { ConfirmationDialogComponent } from '@smec-monorepo/shared/ui';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ConfirmDialogService {
-  // dialogRef!: MatDialogRef<ConfirmationDialogComponent>;
+  dialogRef!: MatDialogRef<ConfirmationDialogComponent>;
 
   constructor(private dialog: MatDialog) {}
 
-  // public open(options: Confirmation) {
-  //   this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-  //     // height: '200px',
-  //     width: '400px',
-  //     disableClose: true,
-  //     data: { ...options },
-  //   });
-  // }
+  public open(options: Confirmation) {
+    this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      // height: '200px',
+      width: '400px',
+      disableClose: true,
+      data: { ...options },
+    });
+  }
 
-  // public confirmed(): Observable<boolean> {
-  //   return this.dialogRef.afterClosed().pipe(take(1));
-  // }
+  public confirmed(): Observable<boolean> {
+    return this.dialogRef.afterClosed().pipe(take(1));
+  }
 }

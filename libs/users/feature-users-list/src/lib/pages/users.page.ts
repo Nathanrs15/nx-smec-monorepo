@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-// import { GridBreakpointService, UIStatus, UtilsService } from '@core/services';
-// import { User } from '@shared/models';
+import {
+  GridBreakpointService,
+  UIStatus,
+  UtilsService,
+} from '@smec-monorepo/shared/utils';
+import { User } from '@smec-monorepo/shared/models';
 import { Observable } from 'rxjs';
-// import { UserService } from '../services';
+import { UserService } from '@smec-monorepo/users/data-access';
 
 @Component({
   template: `
-    USERS PAGE
-    <smec-monorepo-user-list></smec-monorepo-user-list>
-    <!-- <ng-container *ngIf="UIState$ | async as state">
+    <ng-container *ngIf="UIState$ | async as state">
       <ng-container *ngIf="state === UIStates.empty">
         <div class="wrapper">
           <div class="inner">
@@ -16,7 +18,7 @@ import { Observable } from 'rxjs';
               [title]="emptyEstate.title"
               [description]="emptyEstate.description"
             >
-              <button mat-flat-button color="primary" routerLink="add-user">
+              <button mat-flat-button color="primary" [routerLink]="['add-user']">
                 Añadir nuevo usuario
               </button>
             </app-custom-empty-state>
@@ -34,7 +36,7 @@ import { Observable } from 'rxjs';
 
       <ng-container *ngIf="users$ | async as users">
         <ng-container *ngIf="state === UIStates.loaded">
-          <mat-drawer-container>
+          <!-- <mat-drawer-container>
             <mat-drawer #drawer mode="side" position="end" opened>
               <div
                 fxLayout="row"
@@ -55,11 +57,11 @@ import { Observable } from 'rxjs';
                 <mat-list-option> Configurador </mat-list-option>
                 <mat-list-option> Visualizador </mat-list-option>
               </mat-selection-list>
-            </mat-drawer>
-            <mat-drawer-content>
+            </mat-drawer> -->
+            <!-- <mat-drawer-content> -->
               <div class="grid-container">
                 <h2 class="view-title">Administración de usuarios</h2>
-                <button (click)="drawer.toggle()">asdfs</button>
+                <!-- <button (click)="drawer.toggle()">asdfs</button> -->
 
                 <ng-container *ngIf="breakpoint$ | async; else card">
                   <mat-form-field
@@ -69,7 +71,9 @@ import { Observable } from 'rxjs';
                     <mat-label>Buscar</mat-label>
                     <input matInput placeholder="Ej. Administrador" #input />
                   </mat-form-field>
-                  <smec-monorepo-user-list [users]="users"></smec-monorepo-user-list>
+                  <smec-monorepo-user-list
+                    [users]="users"
+                  ></smec-monorepo-user-list>
 
                   <div class="fab-container">
                     <button
@@ -112,15 +116,17 @@ import { Observable } from 'rxjs';
                     </div>
                   </mat-card>
                   <mat-card class="table-card">
-                    <smec-monorepo-user-list [users]="users"></smec-monorepo-user-list>
+                    <smec-monorepo-user-list
+                      [users]="users"
+                    ></smec-monorepo-user-list>
                   </mat-card>
                 </ng-template>
               </div>
-            </mat-drawer-content>
-          </mat-drawer-container>
+            <!-- </mat-drawer-content>
+          </mat-drawer-container> -->
         </ng-container>
       </ng-container>
-    </ng-container> -->
+    </ng-container>
   `,
   styles: [
     `
@@ -136,25 +142,30 @@ import { Observable } from 'rxjs';
   ],
 })
 export class UsersPage implements OnInit {
-  // users$!: Observable<User[]>;
-  // UIState$!: Observable<UIStatus>;
+  users$!: Observable<User[]>;
+  UIState$!: Observable<UIStatus>;
 
-  // UIStates = UIStatus;
+  UIStates = UIStatus;
 
-  // emptyEstate = {
-  //   title: 'No se han encontrado usuarios',
-  //   description: 'Puedes añadir nuevos usuarios a continuación.',
-  // };
-  // breakpoint$ = this.gridService.mobileBreakpoint$;
-  // private toggleService: UtilsService // private gridService: GridBreakpointService, // private userService: UserService,
-  // constructor() {}
+  emptyEstate = {
+    title: 'No se han encontrado usuarios',
+    description: 'Puedes añadir nuevos usuarios a continuación.',
+  };
+  breakpoint$ = this.gridService.mobileBreakpoint$;
+
+  constructor(
+    private toggleService: UtilsService,
+    private gridService: GridBreakpointService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
-    console.log('UsersPage');
+    this.UIState$ = this.userService.UIState$;
+    this.users$ = this.userService.getAllUsers();
   }
 
   toggle() {
-    // this.toggleService.toggleFilter();
+    this.toggleService.toggleFilter();
   }
 }
 

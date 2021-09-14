@@ -36,8 +36,17 @@ import { NavItem } from '@smec-monorepo/shared/models';
 export class SidebarComponent implements OnInit {
   expanded!: boolean;
   @HostBinding('attr.aria-expanded') ariaExpanded = this.expanded;
-  @Input() item!: NavItem;
   @Input() depth!: number;
+
+  private _item!: NavItem;
+
+  @Input() set item(val: NavItem) {
+    this._item = val;
+  }
+
+  get item(): NavItem {
+    return this._item;
+  }
 
   constructor(
     public navService: NavigationService,

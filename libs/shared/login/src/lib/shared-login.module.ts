@@ -7,13 +7,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { ThemeToggleModule } from '@shared/modules';
 import { LoginFormComponent } from './components';
 import { LoginPage } from './pages';
-// import { AngularMaterialModule } from '@core/angular-material.module';
 // import { UndrawModule } from '@shared/undraw';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
+
+import { SharedUiModule } from '@smec-monorepo/shared/ui';
 
 const COMPONENTS = [LoginFormComponent];
 
@@ -24,6 +27,8 @@ const MATERIRAL = [
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
+  FlexLayoutModule,
+  MatButtonModule,
 ];
 
 const MODULES = [
@@ -31,6 +36,7 @@ const MODULES = [
   LoginRoutingModule,
   FormsModule,
   ReactiveFormsModule,
+  SharedUiModule,
   // ThemeToggleModule,
   // AngularMaterialModule,
   // UndrawModule,

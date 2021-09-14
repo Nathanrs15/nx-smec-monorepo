@@ -1,0 +1,81 @@
+<!-- <h2 class="view-title"></h2> -->
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Añadir nuevo usuario</mat-card-title>
+  </mat-card-header>
+  <form class="custom-form" [formGroup]="formGroup" #form="ngForm" (ngSubmit)="onSubmit()">
+    <div fxLayout="column" fxLayoutAlign="space-around start">
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Nombre de usuario</mat-label>
+        <input matInput formControlName="username" name="username" />
+        <button *ngIf="username?.dirty" mat-icon-button matSuffix (click)="restartForm('username')">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Correo electrónico</mat-label>
+        <input matInput formControlName="email" name="email" />
+        <button *ngIf="email?.dirty" mat-icon-button matSuffix (click)="restartForm('email')">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <div [fxLayout]="(breakpoint$ | async) ? 'column' : 'row'" fxFill>
+        <mat-form-field appearance="outline" style="margin-right: 1em;" color="accent">
+          <mat-label>Contraseña</mat-label>
+          <input matInput formControlName="newPassword" name="newPassword"
+            [type]="service.hideNewPassword ? 'password' : 'text'" />
+          <button mat-icon-button type="button" matSuffix (click)="service.hideNewPassword = !service.hideNewPassword"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="service.hideNewPassword">
+            <mat-icon>{{
+              service.hideNewPassword ? 'visibility_off' : 'visibility'
+              }}</mat-icon>
+          </button>
+          <mat-error *ngIf="newPassword?.invalid">
+            {{
+            service.getNewPassswordErrorMessage(newPassword)
+            }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Confirmar contraseña</mat-label>
+          <input matInput formControlName="confirmPassword" name="confirmPassword"
+            [type]="service.hideConfirmPassword ? 'password' : 'text'" />
+
+          <button mat-icon-button type="button" matSuffix (click)="
+              service.hideConfirmPassword = !service.hideConfirmPassword
+            " [attr.aria-label]="'Hide password'" [attr.aria-pressed]="service.hideConfirmPassword">
+            <mat-icon>{{
+              service.hideConfirmPassword ? 'visibility_off' : 'visibility'
+              }}</mat-icon>
+          </button>
+          <mat-error *ngIf="confirmPassword?.invalid">
+            {{
+            service.getCofirmPassswordErrorMessage(confirmPassword)
+            }}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFill>
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Añadir roles al usuario</mat-label>
+          <mat-select multiple formControlName="roles" name="roles">
+            <mat-option *ngFor="let role of roles$ | async; trackBy: trackByFn" [value]="role">{{ role.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form-submit-section" fxLayout="row">
+        <button mat-button class="submit-section-btn" type="submit" color="primary" [disabled]="formGroup.invalid">
+          Guardar
+        </button>
+
+        <button mat-button type="button" (click)="navigateTo()">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </form>
+</mat-card>
