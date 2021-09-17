@@ -34,6 +34,18 @@
       "tags": ["scope:admin"],
       "implicitDependencies": ["adminapp"]
     },
+    "claims-data-access": {
+      "tags": []
+    },
+    "claims-feature-claims": {
+      "tags": []
+    },
+    "claims-feature-claims-edit": {
+      "tags": []
+    },
+    "claims-shell-web": {
+      "tags": []
+    },
     "profile-feature-profile-edit": {
       "tags": ["scope:client"]
     },
@@ -42,6 +54,24 @@
     },
     "profile-shell-web": {
       "tags": ["scope:client"]
+    },
+    "roles-data-access": {
+      "tags": []
+    },
+    "roles-feature-roles": {
+      "tags": []
+    },
+    "roles-feature-roles-add": {
+      "tags": []
+    },
+    "roles-feature-roles-edit": {
+      "tags": []
+    },
+    "roles-shell-web": {
+      "tags": []
+    },
+    "shared-angular-material-components": {
+      "tags": ["scope:shared"]
     },
     "shared-data-access": {
       "tags": ["scope:shared"]
@@ -77,14 +107,14 @@
     "users-data-access": {
       "tags": ["scope:admin", "scope:client"]
     },
-    "users-feature-user-add": {
+    "users-feature-users": {
       "tags": []
     },
-    "users-feature-user-detail": {
-      "tags": ["scope:admin", "scope:client"]
+    "users-feature-users-add": {
+      "tags": []
     },
-    "users-feature-users-list": {
-      "tags": ["scope:admin", "scope:client"]
+    "users-feature-users-edit": {
+      "tags": []
     },
     "users-shell-mobile": {
       "tags": ["scope:admin", "scope:client"]

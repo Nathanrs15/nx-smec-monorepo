@@ -28,10 +28,24 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'roles',
+        loadChildren: () =>
+          import('@smec-monorepo/roles/shell-web').then(
+            (m) => m.RolesShellWebModule
+          ),
+      },
+      {
         path: 'profile',
         loadChildren: () =>
           import('@smec-monorepo/profile/shell-web').then(
             (m) => m.ProfileShellWebModule
+          ),
+      },
+      {
+        path: 'api-resources',
+        loadChildren: () =>
+          import('@smec-monorepo/claims/shell-web').then(
+            (m) => m.ClaimsShellWebModule
           ),
       },
     ],

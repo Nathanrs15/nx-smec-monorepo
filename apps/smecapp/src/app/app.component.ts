@@ -17,88 +17,88 @@ export class AppComponent implements OnInit {
   logo = 'assets/logos/logo_sige.svg';
 
   navItems: NavItem[] = [
-    {
-      displayName: 'Tiempo real',
-      route: 'tiempo-real',
-    },
-    {
-      displayName: 'Históricos',
-      route: '',
-      children: [
-        {
-          displayName: '10 minutales',
-          route: 'historicos/10-minutal',
-          isChild: true,
-        },
-        {
-          displayName: 'Semi horarios',
-          route: 'historicos/semi-horios',
-          isChild: true,
-        },
-        {
-          displayName: 'Horario',
-          route: 'historicos/horario',
-          isChild: true,
-        },
-        {
-          displayName: '8 horario',
-          route: 'historicos/8-horario',
-          isChild: true,
-        },
-        {
-          displayName: 'Diario',
-          route: 'historicos/diario',
-          isChild: true,
-        },
-      ],
-    },
+    // {
+    //   displayName: 'Tiempo real',
+    //   route: 'tiempo-real',
+    // },
+    // {
+    //   displayName: 'Históricos',
+    //   route: '',
+    //   children: [
+    //     {
+    //       displayName: '10 minutales',
+    //       route: 'historicos/10-minutal',
+    //       isChild: true,
+    //     },
+    //     {
+    //       displayName: 'Semi horarios',
+    //       route: 'historicos/semi-horios',
+    //       isChild: true,
+    //     },
+    //     {
+    //       displayName: 'Horario',
+    //       route: 'historicos/horario',
+    //       isChild: true,
+    //     },
+    //     {
+    //       displayName: '8 horario',
+    //       route: 'historicos/8-horario',
+    //       isChild: true,
+    //     },
+    //     {
+    //       displayName: 'Diario',
+    //       route: 'historicos/diario',
+    //       isChild: true,
+    //     },
+    //   ],
+    // },
 
-    {
-      displayName: 'Redundancia',
-      route: 'redundancia',
-    },
-    {
-      displayName: 'Gráficas',
-      route: 'graficas',
-    },
-    {
-      displayName: 'CUSUM',
-      route: 'cusum',
-    },
-    {
-      displayName: 'Calibración',
-      route: 'calibracion',
-    },
-    {
-      displayName: 'Tipos de residuos',
-      route: 'tipos-residuos',
-      isChild: true,
-    },
-    {
-      displayName: 'Correciones',
-      route: 'correcciones',
-      isChild: true,
-    },
-    {
-      displayName: 'Límites',
-      route: 'limites',
-      isChild: true,
-    },
-    {
-      displayName: 'Informes',
-      route: 'informes',
-      isChild: true,
-    },
-    {
-      displayName: 'Estado del foco',
-      route: 'estado-foco',
-      isChild: true,
-    },
-    {
-      displayName: 'Alarmas',
-      route: 'alarmas',
-      isChild: true,
-    },
+    // {
+    //   displayName: 'Redundancia',
+    //   route: 'redundancia',
+    // },
+    // {
+    //   displayName: 'Gráficas',
+    //   route: 'graficas',
+    // },
+    // {
+    //   displayName: 'CUSUM',
+    //   route: 'cusum',
+    // },
+    // {
+    //   displayName: 'Calibración',
+    //   route: 'calibracion',
+    // },
+    // {
+    //   displayName: 'Tipos de residuos',
+    //   route: 'tipos-residuos',
+    //   isChild: true,
+    // },
+    // {
+    //   displayName: 'Correciones',
+    //   route: 'correcciones',
+    //   isChild: true,
+    // },
+    // {
+    //   displayName: 'Límites',
+    //   route: 'limites',
+    //   isChild: true,
+    // },
+    // {
+    //   displayName: 'Informes',
+    //   route: 'informes',
+    //   isChild: true,
+    // },
+    // {
+    //   displayName: 'Estado del foco',
+    //   route: 'estado-foco',
+    //   isChild: true,
+    // },
+    // {
+    //   displayName: 'Alarmas',
+    //   route: 'alarmas',
+    //   isChild: true,
+    // },
     {
       displayName: 'Ajustes',
       // iconName: 'settings',

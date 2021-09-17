@@ -15,6 +15,16 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@smec-monorepo/claims/data-access": [
+        "libs/claims/data-access/src/index.ts"
+      ],
+      "@smec-monorepo/claims/feature-claims": [
+        "libs/claims/feature-claims/src/index.ts"
+      ],
+      "@smec-monorepo/claims/feature-claims-edit": [
+        "libs/claims/feature-claims-edit/src/index.ts"
+      ],
+      "@smec-monorepo/claims/shell-web": ["libs/claims/shell-web/src/index.ts"],
       "@smec-monorepo/profile/feature-profile-edit": [
         "libs/profile/feature-profile-edit/src/index.ts"
       ],
@@ -23,6 +33,22 @@
       ],
       "@smec-monorepo/profile/shell-web": [
         "libs/profile/shell-web/src/index.ts"
+      ],
+      "@smec-monorepo/roles/data-access": [
+        "libs/roles/data-access/src/index.ts"
+      ],
+      "@smec-monorepo/roles/feature-roles": [
+        "libs/roles/feature-roles/src/index.ts"
+      ],
+      "@smec-monorepo/roles/feature-roles-add": [
+        "libs/roles/feature-roles-add/src/index.ts"
+      ],
+      "@smec-monorepo/roles/feature-roles-edit": [
+        "libs/roles/feature-roles-edit/src/index.ts"
+      ],
+      "@smec-monorepo/roles/shell-web": ["libs/roles/shell-web/src/index.ts"],
+      "@smec-monorepo/shared/angular-material-components": [
+        "libs/shared/angular-material-components/src/index.ts"
       ],
       "@smec-monorepo/shared/data-access": [
         "libs/shared/data-access/src/index.ts"
@@ -41,14 +67,14 @@
       "@smec-monorepo/users/data-access": [
         "libs/users/data-access/src/index.ts"
       ],
-      "@smec-monorepo/users/feature-user-add": [
-        "libs/users/feature-user-add/src/index.ts"
+      "@smec-monorepo/users/feature-users": [
+        "libs/users/feature-users/src/index.ts"
       ],
-      "@smec-monorepo/users/feature-user-detail": [
-        "libs/users/feature-user-detail/src/index.ts"
+      "@smec-monorepo/users/feature-users-add": [
+        "libs/users/feature-users-add/src/index.ts"
       ],
-      "@smec-monorepo/users/feature-users-list": [
-        "libs/users/feature-users-list/src/index.ts"
+      "@smec-monorepo/users/feature-users-edit": [
+        "libs/users/feature-users-edit/src/index.ts"
       ],
       "@smec-monorepo/users/shell-mobile": [
         "libs/users/shell-mobile/src/index.ts"

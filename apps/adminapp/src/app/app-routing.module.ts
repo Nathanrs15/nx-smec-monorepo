@@ -20,13 +20,13 @@ const routes: Routes = [
     component: DefaultLayoutComponent,
     canActivate: [AuthenticationGuard],
     children: [
-      {
-        path: 'users',
-        loadChildren: () =>
-          import('@smec-monorepo/users/shell-web').then(
-            (m) => m.UsersShellWebModule
-          ),
-      },
+      // {
+      //   path: 'users',
+      //   loadChildren: () =>
+      //     import('@smec-monorepo/users/shell-web').then(
+      //       (m) => m.UsersShellWebModule
+      //     ),
+      // },
     ],
   },
   { path: '**', redirectTo: 'app', pathMatch: 'full' },
