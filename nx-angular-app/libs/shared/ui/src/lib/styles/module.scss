@@ -45,9 +45,9 @@
   @include mat.all-component-themes($anms-orange-dark-theme);
   @include custom-components-theme($anms-orange-dark-theme);
 
-  mat-card {
-    border: 0.5px solid hsla(0, 0%, 100%, 0.2);
-  }
+  // mat-card {
+  //   border: 0.5px solid hsla(0, 0%, 100%, 0.2);
+  // }
 }
 
 .black-theme {
@@ -58,6 +58,13 @@
 // :root {
 //   color-scheme: dark;
 // }
+
+html,
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
 
 mat-card {
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -79,17 +86,22 @@ mat-card {
   }
 }
 
+mat-toolbar {
+  position: relative;
+  z-index: 2 !important;
+}
+
+mat-drawer-container {
+  position: absolute !important;
+  top: 0;
+  width: 100%;
+  bottom: 0;
+}
+
 .custom-panel.mat-menu-panel {
   max-width: none;
   width: 450px;
   padding: 0 12px 0 12px;
-}
-
-html,
-body {
-  height: 100vh;
-  margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 .grid-container {
@@ -105,11 +117,6 @@ body {
   bottom: 15px;
   width: 100%;
   height: 100%;
-}
-
-mat-toolbar {
-  position: relative;
-  z-index: 2 !important;
 }
 
 .table-card.mat-card {
@@ -328,12 +335,6 @@ h2.view-title {
 //   width: 320px !important;
 // }
 
-mat-drawer-container {
-  position: absolute !important;
-  top: 0;
-  width: 100%;
-  bottom: 0;
-}
 .mat-table tr.mat-row:hover {
   background-color: #ece8e8;
 }
