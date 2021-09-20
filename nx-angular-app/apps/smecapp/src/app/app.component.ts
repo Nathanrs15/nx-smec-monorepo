@@ -99,32 +99,32 @@ export class AppComponent implements OnInit {
     //   route: 'alarmas',
     //   isChild: true,
     // },
-    {
-      displayName: 'Ajustes',
-      // iconName: 'settings',
-      route: '',
-      permission: ['Users.View', 'Roles.View', 'Resources.View'],
-      children: [
-        {
-          displayName: 'Usuarios',
-          route: 'users',
-          isChild: true,
-          permission: 'Users.View',
-        },
-        {
-          displayName: 'Roles',
-          route: 'roles',
-          permission: 'Roles.View',
-          isChild: true,
-        },
-        {
-          displayName: 'Recursos',
-          route: 'api-resources',
-          permission: 'Resources.View',
-          isChild: true,
-        },
-      ],
-    },
+    // {
+    //   displayName: 'Ajustes',
+    //   // iconName: 'settings',
+    //   route: '',
+    //   permission: ['Users.View', 'Roles.View', 'Resources.View'],
+    //   children: [
+    //     {
+    //       displayName: 'Usuarios',
+    //       route: 'users',
+    //       isChild: true,
+    //       permission: 'Users.View',
+    //     },
+    //     {
+    //       displayName: 'Roles',
+    //       route: 'roles',
+    //       permission: 'Roles.View',
+    //       isChild: true,
+    //     },
+    //     {
+    //       displayName: 'Recursos',
+    //       route: 'api-resources',
+    //       permission: 'Resources.View',
+    //       isChild: true,
+    //     },
+    //   ],
+    // },
   ];
 
   storedTheme = localStorage.getItem('theme');

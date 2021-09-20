@@ -46,3 +46,15 @@ D:\Sige\Control emisiones\0auth2-app\services\Shared.Module\obj\Debug\net5.0\Sha
 D:\Sige\Control emisiones\0auth2-app\services\Shared.Module\obj\Debug\net5.0\Shared.Module.dll
 D:\Sige\Control emisiones\0auth2-app\services\Shared.Module\obj\Debug\net5.0\ref\Shared.Module.dll
 D:\Sige\Control emisiones\0auth2-app\services\Shared.Module\obj\Debug\net5.0\Shared.Module.pdb
+D:\Sige\Control emisiones\nx-smec-monorepo\services\Shared.Module\bin\Debug\net5.0\Shared.Module.deps.json
+D:\Sige\Control emisiones\nx-smec-monorepo\services\Shared.Module\bin\Debug\net5.0\Shared.Module.dll
+D:\Sige\Control emisiones\nx-smec-monorepo\services\Shared.Module\bin\Debug\net5.0\ref\Shared.Module.dll
+D:\Sige\Control emisiones\nx-smec-monorepo\services\Shared.Module\bin\Debug\net5.0\Shared.Module.pdb
+D:\Sige\Control emisiones\nx-smec-monorepo\services\Shared.Module\obj\Debug\net5.0\Shared.Module.csproj.AssemblyReference.cache
+D:\Sige\Control emisiones\nx-smec-monorepo\services\Shared.Module\obj\Debug\net5.0\Shared.Module.GeneratedMSBuildEditorConfig.editorconfig
+D:\Sige\Control emisiones\nx-smec-monorepo\services\Shared.Module\obj\Debug\net5.0\Shared.Module.AssemblyInfoInputs.cache
+D:\Sige\Control emisiones\nx-smec-monorepo\services\Shared.Module\obj\Debug\net5.0\Shared.Module.AssemblyInfo.cs
+D:\Sige\Control emisiones\nx-smec-monorepo\services\Shared.Module\obj\Debug\net5.0\Shared.Module.csproj.CoreCompileInputs.cache
+D:\Sige\Control emisiones\nx-smec-monorepo\services\Shared.Module\obj\Debug\net5.0\Shared.Module.dll
+D:\Sige\Control emisiones\nx-smec-monorepo\services\Shared.Module\obj\Debug\net5.0\ref\Shared.Module.dll
+D:\Sige\Control emisiones\nx-smec-monorepo\services\Shared.Module\obj\Debug\net5.0\Shared.Module.pdb

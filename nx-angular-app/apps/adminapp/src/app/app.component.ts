@@ -17,18 +17,18 @@ export class AppComponent implements OnInit {
       displayName: 'Usuarios',
       route: 'users',
       // isChild: false,
-      // permission: 'Users.View',
+      permission: 'Users.View',
     },
     {
       displayName: 'Roles',
       route: 'roles',
-      // permission: 'Roles.View',
+      permission: 'Roles.View',
       // isChild: false,
     },
     {
       displayName: 'Recursos',
       route: 'api-resources',
-      // permission: 'Resources.View',
+      permission: 'Resources.View',
       // isChild: false,
     },
   ];

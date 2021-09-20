@@ -14,7 +14,12 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ]
       }
     }
   },
@@ -28,99 +33,165 @@
   },
   "projects": {
     "adminapp": {
-      "tags": ["scope:admin"]
+      "tags": [
+        "scope:admin"
+      ]
     },
     "adminapp-e2e": {
-      "tags": ["scope:admin"],
-      "implicitDependencies": ["adminapp"]
+      "tags": [
+        "scope:admin"
+      ],
+      "implicitDependencies": [
+        "adminapp"
+      ]
     },
     "claims-data-access": {
-      "tags": []
+      "tags": [
+        "scope:admin"
+      ]
     },
     "claims-feature-claims": {
-      "tags": []
+      "tags": [
+        "scope:admin"
+      ]
     },
     "claims-feature-claims-edit": {
-      "tags": []
+      "tags": [
+        "scope:admin"
+      ]
     },
     "claims-shell-web": {
-      "tags": []
+      "tags": [
+        "scope:admin"
+      ]
     },
     "profile-feature-profile-edit": {
-      "tags": ["scope:client"]
+      "tags": [
+        "scope:client"
+      ]
     },
     "profile-shell-mobile": {
-      "tags": ["scope:client"]
+      "tags": [
+        "scope:client"
+      ]
     },
     "profile-shell-web": {
-      "tags": ["scope:client"]
+      "tags": [
+        "scope:client"
+      ]
     },
     "roles-data-access": {
-      "tags": []
+      "tags": [
+        "scope:admin"
+      ]
     },
     "roles-feature-roles": {
-      "tags": []
+      "tags": [
+        "scope:admin"
+      ]
     },
     "roles-feature-roles-add": {
-      "tags": []
+      "tags": [
+        "scope:admin"
+      ]
     },
     "roles-feature-roles-edit": {
-      "tags": []
+      "tags": [
+        "scope:admin"
+      ]
     },
     "roles-shell-web": {
-      "tags": []
+      "tags": [
+        "scope:admin"
+      ]
     },
     "shared-angular-material-components": {
-      "tags": ["scope:shared"]
+      "tags": [
+        "scope:shared"
+      ]
     },
     "shared-data-access": {
-      "tags": ["scope:shared"]
+      "tags": [
+        "scope:shared"
+      ]
     },
     "shared-environments": {
-      "tags": ["scope:shared"]
+      "tags": [
+        "scope:shared"
+      ]
     },
     "shared-guards": {
-      "tags": ["scope:shared"]
+      "tags": [
+        "scope:shared"
+      ]
     },
     "shared-interceptors": {
-      "tags": ["scope:shared"]
+      "tags": [
+        "scope:shared"
+      ]
     },
     "shared-login": {
-      "tags": ["scope:shared"]
+      "tags": [
+        "scope:shared"
+      ]
     },
     "shared-models": {
-      "tags": ["scope:shared"]
+      "tags": [
+        "scope:shared"
+      ]
     },
     "shared-ui": {
-      "tags": ["scope:shared"]
+      "tags": [
+        "scope:shared"
+      ]
     },
     "shared-utils": {
-      "tags": ["scope:shared"]
+      "tags": [
+        "scope:shared"
+      ]
     },
     "smecapp": {
-      "tags": ["scope:client"]
+      "tags": [
+        "scope:client"
+      ]
     },
     "smecapp-e2e": {
-      "tags": ["scope:client"],
-      "implicitDependencies": ["smecapp"]
+      "tags": [
+        "scope:client"
+      ],
+      "implicitDependencies": [
+        "smecapp"
+      ]
     },
     "users-data-access": {
-      "tags": ["scope:admin", "scope:client"]
+      "tags": [
+        "scope:admin"
+      ]
     },
     "users-feature-users": {
-      "tags": []
+      "tags": [
+        "scope:admin"
+      ]
     },
     "users-feature-users-add": {
-      "tags": []
+      "tags": [
+        "scope:admin"
+      ]
     },
     "users-feature-users-edit": {
-      "tags": []
+      "tags": [
+        "scope:admin"
+      ]
     },
     "users-shell-mobile": {
-      "tags": ["scope:admin", "scope:client"]
+      "tags": [
+        "scope:admin"
+      ]
     },
     "users-shell-web": {
-      "tags": ["scope:admin", "scope:client"]
+      "tags": [
+        "scope:admin"
+      ]
     }
   }
 }

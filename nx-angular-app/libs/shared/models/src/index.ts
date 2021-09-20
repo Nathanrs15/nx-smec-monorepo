@@ -6,3 +6,4 @@ export * from './lib/question-textbox';
 export * from './lib/table-menu';
 export * from './lib/tokenResponse';
 export * from './lib/user';
+export * from './lib/smec';

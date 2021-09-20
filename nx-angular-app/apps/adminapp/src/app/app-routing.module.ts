@@ -20,13 +20,27 @@ const routes: Routes = [
     component: DefaultLayoutComponent,
     canActivate: [AuthenticationGuard],
     children: [
-      // {
-      //   path: 'users',
-      //   loadChildren: () =>
-      //     import('@smec-monorepo/users/shell-web').then(
-      //       (m) => m.UsersShellWebModule
-      //     ),
-      // },
+      {
+        path: 'users',
+        loadChildren: () =>
+          import('@smec-monorepo/users/shell-web').then(
+            (m) => m.UsersShellWebModule
+          ),
+      },
+      {
+        path: 'roles',
+        loadChildren: () =>
+          import('@smec-monorepo/roles/shell-web').then(
+            (m) => m.RolesShellWebModule
+          ),
+      },
+      {
+        path: 'api-resources',
+        loadChildren: () =>
+          import('@smec-monorepo/claims/shell-web').then(
+            (m) => m.ClaimsShellWebModule
+          ),
+      },
     ],
   },
   { path: '**', redirectTo: 'app', pathMatch: 'full' },

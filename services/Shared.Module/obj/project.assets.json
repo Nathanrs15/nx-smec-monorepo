@@ -3901,13 +3901,13 @@
     "C:\\Users\\Nathan\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "21.3.0",
+    "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Sige\\Control emisiones\\0auth2-app\\services\\Shared.Module\\Shared.Module.csproj",
+      "projectUniqueName": "D:\\Sige\\Control emisiones\\nx-smec-monorepo\\services\\Shared.Module\\Shared.Module.csproj",
       "projectName": "Shared.Module",
-      "projectPath": "D:\\Sige\\Control emisiones\\0auth2-app\\services\\Shared.Module\\Shared.Module.csproj",
+      "projectPath": "D:\\Sige\\Control emisiones\\nx-smec-monorepo\\services\\Shared.Module\\Shared.Module.csproj",
       "packagesPath": "C:\\Users\\Nathan\\.nuget\\packages\\",
-      "outputPath": "D:\\Sige\\Control emisiones\\0auth2-app\\services\\Shared.Module\\obj\\",
+      "outputPath": "D:\\Sige\\Control emisiones\\nx-smec-monorepo\\services\\Shared.Module\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Nathan\\AppData\\Roaming\\NuGet\\NuGet.Config",

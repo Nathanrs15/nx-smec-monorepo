@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0v8ASY7GhHf9nkfa+ytuto+l//jE9vn9PDAIr6GogMFIhVzKEV1afxAQwK5vVeqKzpmfLuCRMPMI4u2mD8BC1A==",
+  "dgSpecHash": "UG7AUc///DTYtkX82rzxTyItrpZg97QkM/8jXLeh+6Knoctn875XgwCMIerucwFc3QAcwwWVaWbPLUy79w3yXQ==",
   "success": true,
-  "projectFilePath": "D:\\Sige\\Control emisiones\\0auth2-app\\services\\Shared.Module\\Shared.Module.csproj",
+  "projectFilePath": "D:\\Sige\\Control emisiones\\nx-smec-monorepo\\services\\Shared.Module\\Shared.Module.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nathan\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Nathan\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
