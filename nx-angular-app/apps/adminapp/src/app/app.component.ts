@@ -45,7 +45,5 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.navService.setNavItems(this.navItems);
     this.service.setCurrentTitle(this.router, this.route);
-
-    // this.navService.navItems$.subscribe((data) => console.log('naitems', data));
   }
 }
