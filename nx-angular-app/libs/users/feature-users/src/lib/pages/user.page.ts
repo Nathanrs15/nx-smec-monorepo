@@ -18,15 +18,9 @@ import { UserService } from '@smec-monorepo/users/data-access';
       <!-- loaded state -->
       <ng-container *ngIf="users$ | async as users">
         <ng-container *ngIf="state === UIStates.loaded">
-          <!-- <app-drawer>
-            <app-user-filters filters></app-user-filters> -->
-          <!-- class="grid-container" -->
-          <!-- <div content> -->
           <h2 class="view-title">Administración de usuarios</h2>
           <app-user-responsive-table [users]="users">
           </app-user-responsive-table>
-          <!-- </div>
-          </app-drawer> -->
         </ng-container>
       </ng-container>
     </ng-container>

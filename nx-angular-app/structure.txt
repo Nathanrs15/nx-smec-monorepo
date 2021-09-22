@@ -1,0 +1,21 @@
+core/
+  components/
+  auth/
+  navigation/
+  pipes/
+  services/
+
+layout/
+  common/
+  layouts/
+
+ui/
+  styles/
+
+utils/
+
+shared/
+  guards/
+  interceptors/
+  models/
+

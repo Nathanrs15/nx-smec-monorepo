@@ -3,14 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { NgxPermissionsModule } from 'ngx-permissions';
 
-import {
-  ConfirmationDialogComponent,
-  HeaderComponent,
-  ProgressBarComponent,
-  SidebarComponent,
-} from './components';
-import { DefaultLayoutComponent } from './layout';
-
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatListModule } from '@angular/material/list';
@@ -40,17 +32,11 @@ const MATERIAL = [
 ];
 
 const COMPONENTS = [
-  HeaderComponent,
-  ProgressBarComponent,
-  SidebarComponent,
   UndrawAvatarComponent,
   UndrawSettingsComponent,
   UndrawEmptyStateComponent,
   CustomEmptyStateComponent,
-  ConfirmationDialogComponent,
 ];
-
-const LAYOUTS = [DefaultLayoutComponent];
 
 @NgModule({
   imports: [
@@ -59,7 +45,7 @@ const LAYOUTS = [DefaultLayoutComponent];
     NgxPermissionsModule.forRoot(),
     ...MATERIAL,
   ],
-  declarations: [...COMPONENTS, ...LAYOUTS],
-  exports: [...COMPONENTS, ...LAYOUTS],
+  declarations: [...COMPONENTS],
+  exports: [...COMPONENTS],
 })
 export class SharedUiModule {}

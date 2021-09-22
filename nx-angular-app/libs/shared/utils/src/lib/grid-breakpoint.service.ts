@@ -13,7 +13,7 @@ export class GridBreakpointService {
   private mobileSource = new BehaviorSubject<boolean>(this.mobile);
   mobileBreakpoint$ = this.mobileSource.asObservable();
 
-  constructor() {}
+  // constructor() {}
 
   onResize(event: any) {
     const source = event.target.innerWidth <= 1500 ? true : false;

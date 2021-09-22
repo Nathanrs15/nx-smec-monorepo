@@ -25,6 +25,8 @@
         "libs/claims/feature-claims-edit/src/index.ts"
       ],
       "@smec-monorepo/claims/shell-web": ["libs/claims/shell-web/src/index.ts"],
+      "@smec-monorepo/core": ["libs/core/src/index.ts"],
+      "@smec-monorepo/layout": ["libs/layout/src/index.ts"],
       "@smec-monorepo/profile/feature-profile-edit": [
         "libs/profile/feature-profile-edit/src/index.ts"
       ],

@@ -26,6 +26,7 @@ import {
   NavigationService,
   UtilsService,
 } from '@smec-monorepo/shared/utils';
+
 import { NavItem } from '@smec-monorepo/shared/models';
 
 @Component({
@@ -34,9 +35,7 @@ import { NavItem } from '@smec-monorepo/shared/models';
   styleUrls: ['./default-layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DefaultLayoutComponent
-  implements AfterViewInit, OnDestroy
-{
+export class DefaultLayoutComponent implements AfterViewInit, OnDestroy {
   sideBarOpen = true;
   @ViewChild('drawer') appDrawer!: ElementRef;
   @ViewChild('filter', { static: true }) appFilter!: MatDrawer;
@@ -91,7 +90,7 @@ export class DefaultLayoutComponent
 
     this.navItems$ = this.navService.navItems$;
 
-    this.navItems$.subscribe(data => console.log(data))
+    this.navItems$.subscribe((data) => console.log(data));
   }
 
   trackByFn(index: number, item: any) {

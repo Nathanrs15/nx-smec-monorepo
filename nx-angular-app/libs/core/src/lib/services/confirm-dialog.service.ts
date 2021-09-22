@@ -3,7 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Confirmation } from '@smec-monorepo/shared/models';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { ConfirmationDialogComponent } from '@smec-monorepo/shared/ui';
+import { ConfirmationDialogComponent } from '../components/confirmation-dialog.component';
 
 @Injectable({
   providedIn: 'root',
