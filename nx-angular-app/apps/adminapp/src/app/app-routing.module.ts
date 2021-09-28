@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DefaultLayoutComponent } from '@smec-monorepo/shared/ui';
+import { DefaultLayoutComponent } from '@smec-monorepo/layout';
 
 import {
   AuthenticationGuard,
@@ -21,24 +21,31 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard],
     children: [
       {
+        path: 'profile',
+        loadChildren: () =>
+          import('@smec-monorepo/modules-profile-shell-web').then(
+            (m) => m.ModulesProfileShellWebModule
+          ),
+      },
+      {
         path: 'users',
         loadChildren: () =>
-          import('@smec-monorepo/users/shell-web').then(
-            (m) => m.UsersShellWebModule
+          import('@smec-monorepo/modules-users-shell-web').then(
+            (m) => m.ModulesUsersShellWebModule
           ),
       },
       {
         path: 'roles',
         loadChildren: () =>
-          import('@smec-monorepo/roles/shell-web').then(
-            (m) => m.RolesShellWebModule
+          import('@smec-monorepo/modules-roles-shell-web').then(
+            (m) => m.ModulesRolesShellWebModule
           ),
       },
       {
         path: 'api-resources',
         loadChildren: () =>
-          import('@smec-monorepo/claims/shell-web').then(
-            (m) => m.ClaimsShellWebModule
+          import('@smec-monorepo/modules-claims-shell-web').then(
+            (m) => m.ModulesClaimsShellWebModule
           ),
       },
     ],

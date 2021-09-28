@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {
   Router,
   CanActivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
+  // ActivatedRouteSnapshot,
+  // RouterStateSnapshot,
 } from '@angular/router';
 import { AuthenticationService } from '@smec-monorepo/shared/data-access';
 import { NgxPermissionsService } from 'ngx-permissions';
@@ -18,7 +18,7 @@ export class AuthenticationGuard implements CanActivate {
     private authService: AuthenticationService
   ) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  canActivate(/*route: ActivatedRouteSnapshot, state: RouterStateSnapshot*/) {
     if (!this.authService.isLoggedIn()) {
       this.router.navigate(['login']);
       return false;
@@ -45,7 +45,7 @@ export class UserIsLoggedGuard implements CanActivate {
     private authService: AuthenticationService
   ) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  canActivate(/*route: ActivatedRouteSnapshot, state: RouterStateSnapshot*/) {
     if (this.authService.isLoggedIn()) {
       this.router.navigate(['app']);
     }

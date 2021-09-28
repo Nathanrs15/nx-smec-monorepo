@@ -10,7 +10,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import {
@@ -39,12 +38,7 @@ const COMPONENTS = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    NgxPermissionsModule.forRoot(),
-    ...MATERIAL,
-  ],
+  imports: [CommonModule, ...MATERIAL],
   declarations: [...COMPONENTS],
   exports: [...COMPONENTS],
 })

@@ -1,0 +1,75 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import {
+  RoleClaimsRequest,
+  RolePermissionsByType,
+} from '@smec-monorepo/modules-roles-data-acess';
+import { combineLatest, Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+import { RolesFeatureService } from '@smec-monorepo/modules-roles-data-acess';
+
+@Component({
+  template: `
+    <ng-container *ngIf="rolepermissionsByType$ | async as data; else empty">
+      <app-manage-permissions [data]="data" (update)="updateData($event)">
+      </app-manage-permissions>
+    </ng-container>
+    <ng-template #empty> NO DATA </ng-template>
+  `,
+  styles: [],
+})
+export class PermissionsPage implements OnInit {
+  rolepermissionsByType$!: Observable<RolePermissionsByType>;
+
+  roleId!: string;
+  type!: string;
+
+  constructor(
+    private route: ActivatedRoute,
+    private roleService: RolesFeatureService
+  ) {}
+
+  ngOnInit(): void {
+    this.getData();
+  }
+
+  getData() {
+    const child = this.route.paramMap.pipe(
+      map((params) => {
+        this.type = String(params.get('type'));
+        return this.type;
+      })
+    );
+
+    let parent: Observable<string>;
+
+    if (this.route.parent) {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      parent = this.route.parent.paramMap.pipe(
+        map((params) => {
+          this.roleId = String(params.get('id'));
+          return this.roleId;
+        })
+      )!;
+
+      this.rolepermissionsByType$ = combineLatest([child, parent]).pipe(
+        map(([type, role]) => {
+          return { type, role };
+        }),
+        switchMap((data) =>
+          this.roleService.getPermissionsByType(data.role, data.type)
+        )
+      );
+    }
+  }
+
+  updateData(permissions: RoleClaimsRequest[]) {
+    const data = { roleId: this.roleId, roleClaims: permissions };
+    return this.roleService
+      .updateRolePermissions(this.type, data)
+      .subscribe(() => {
+        this.roleService.showUpdatedPermissionsSnackBar();
+        this.getData();
+      });
+  }
+}

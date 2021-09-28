@@ -1,7 +1,5 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, HostBinding, OnInit } from '@angular/core';
-import { MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavItem } from '@smec-monorepo/shared/models';
 
@@ -14,7 +12,6 @@ import { NavigationService, UtilsService } from '@smec-monorepo/shared/utils';
 })
 export class AppComponent implements OnInit {
   title = 'adminapp';
-  logo = 'assets/logos/logo_sige.svg';
 
   navItems: NavItem[] = [
     {
@@ -40,8 +37,6 @@ export class AppComponent implements OnInit {
   storedTheme = localStorage.getItem('theme');
   isDarkMode = localStorage.getItem('isDarkMode');
 
-  trustedUrl!: SafeUrl;
-
   @HostBinding('class') className = this.storedTheme
     ? this.storedTheme
     : 'nature-theme';
@@ -50,14 +45,10 @@ export class AppComponent implements OnInit {
     private navService: NavigationService,
     private service: UtilsService,
     private overlay: OverlayContainer,
-    private iconRegistry: MatIconRegistry,
-    private sanitizer: DomSanitizer,
     private router: Router,
     private route: ActivatedRoute
   ) {
     console.log('Client APP');
-    this.trustedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.logo);
-    this.iconRegistry.addSvgIcon('logo-sige', this.trustedUrl);
   }
 
   ngOnInit() {

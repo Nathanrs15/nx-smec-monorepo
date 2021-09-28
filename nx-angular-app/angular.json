@@ -131,38 +131,17 @@
         }
       }
     },
-    "claims-data-access": {
-      "root": "libs/claims/data-access",
-      "sourceRoot": "libs/claims/data-access/src",
+    "core-app": {
       "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/claims/data-access/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/claims/data-access"],
-          "options": {
-            "jestConfig": "libs/claims/data-access/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "claims-feature-claims": {
-      "projectType": "library",
-      "root": "libs/claims/feature-claims",
-      "sourceRoot": "libs/claims/feature-claims/src",
+      "root": "libs/core-app",
+      "sourceRoot": "libs/core-app/src",
       "prefix": "smec-monorepo",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/claims/feature-claims"],
+          "outputs": ["coverage/libs/core-app"],
           "options": {
-            "jestConfig": "libs/claims/feature-claims/jest.config.js",
+            "jestConfig": "libs/core-app/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -170,83 +149,8 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/claims/feature-claims/src/**/*.ts",
-              "libs/claims/feature-claims/src/**/*.html"
-            ]
-          }
-        }
-      }
-    },
-    "claims-feature-claims-edit": {
-      "projectType": "library",
-      "root": "libs/claims/feature-claims-edit",
-      "sourceRoot": "libs/claims/feature-claims-edit/src",
-      "prefix": "smec-monorepo",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/claims/feature-claims-edit"],
-          "options": {
-            "jestConfig": "libs/claims/feature-claims-edit/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/claims/feature-claims-edit/src/**/*.ts",
-              "libs/claims/feature-claims-edit/src/**/*.html"
-            ]
-          }
-        }
-      }
-    },
-    "claims-shell-web": {
-      "projectType": "library",
-      "root": "libs/claims/shell-web",
-      "sourceRoot": "libs/claims/shell-web/src",
-      "prefix": "smec-monorepo",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/claims/shell-web"],
-          "options": {
-            "jestConfig": "libs/claims/shell-web/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/claims/shell-web/src/**/*.ts",
-              "libs/claims/shell-web/src/**/*.html"
-            ]
-          }
-        }
-      }
-    },
-    "core": {
-      "projectType": "library",
-      "root": "libs/core",
-      "sourceRoot": "libs/core/src",
-      "prefix": "smec-monorepo",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/core"],
-          "options": {
-            "jestConfig": "libs/core/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/core/src/**/*.ts",
-              "libs/core/src/**/*.html"
+              "libs/core-app/src/**/*.ts",
+              "libs/core-app/src/**/*.html"
             ]
           }
         }
@@ -277,17 +181,38 @@
         }
       }
     },
-    "profile-feature-profile-edit": {
+    "modules-claims-data-access": {
+      "root": "libs/modules/claims/data-access",
+      "sourceRoot": "libs/modules/claims/data-access/src",
       "projectType": "library",
-      "root": "libs/profile/feature-profile-edit",
-      "sourceRoot": "libs/profile/feature-profile-edit/src",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/modules/claims/data-access/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/modules/claims/data-access"],
+          "options": {
+            "jestConfig": "libs/modules/claims/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "modules-claims-feature-claims": {
+      "projectType": "library",
+      "root": "libs/modules/claims/feature-claims",
+      "sourceRoot": "libs/modules/claims/feature-claims/src",
       "prefix": "smec-monorepo",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/profile/feature-profile-edit"],
+          "outputs": ["coverage/libs/modules/claims/feature-claims"],
           "options": {
-            "jestConfig": "libs/profile/feature-profile-edit/jest.config.js",
+            "jestConfig": "libs/modules/claims/feature-claims/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -295,24 +220,24 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/profile/feature-profile-edit/src/**/*.ts",
-              "libs/profile/feature-profile-edit/src/**/*.html"
+              "libs/modules/claims/feature-claims/src/**/*.ts",
+              "libs/modules/claims/feature-claims/src/**/*.html"
             ]
           }
         }
       }
     },
-    "profile-shell-mobile": {
+    "modules-claims-feature-claims-edit": {
       "projectType": "library",
-      "root": "libs/profile/shell-mobile",
-      "sourceRoot": "libs/profile/shell-mobile/src",
+      "root": "libs/modules/claims/feature-claims-edit",
+      "sourceRoot": "libs/modules/claims/feature-claims-edit/src",
       "prefix": "smec-monorepo",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/profile/shell-mobile"],
+          "outputs": ["coverage/libs/modules/claims/feature-claims-edit"],
           "options": {
-            "jestConfig": "libs/profile/shell-mobile/jest.config.js",
+            "jestConfig": "libs/modules/claims/feature-claims-edit/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -320,24 +245,24 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/profile/shell-mobile/src/**/*.ts",
-              "libs/profile/shell-mobile/src/**/*.html"
+              "libs/modules/claims/feature-claims-edit/src/**/*.ts",
+              "libs/modules/claims/feature-claims-edit/src/**/*.html"
             ]
           }
         }
       }
     },
-    "profile-shell-web": {
+    "modules-claims-shell-web": {
       "projectType": "library",
-      "root": "libs/profile/shell-web",
-      "sourceRoot": "libs/profile/shell-web/src",
+      "root": "libs/modules/claims/shell-web",
+      "sourceRoot": "libs/modules/claims/shell-web/src",
       "prefix": "smec-monorepo",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/profile/shell-web"],
+          "outputs": ["coverage/libs/modules/claims/shell-web"],
           "options": {
-            "jestConfig": "libs/profile/shell-web/jest.config.js",
+            "jestConfig": "libs/modules/claims/shell-web/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -345,45 +270,24 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/profile/shell-web/src/**/*.ts",
-              "libs/profile/shell-web/src/**/*.html"
+              "libs/modules/claims/shell-web/src/**/*.ts",
+              "libs/modules/claims/shell-web/src/**/*.html"
             ]
           }
         }
       }
     },
-    "roles-data-access": {
-      "root": "libs/roles/data-access",
-      "sourceRoot": "libs/roles/data-access/src",
+    "modules-profile-feature-profile-edit": {
       "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/roles/data-access/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/roles/data-access"],
-          "options": {
-            "jestConfig": "libs/roles/data-access/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "roles-feature-roles": {
-      "projectType": "library",
-      "root": "libs/roles/feature-roles",
-      "sourceRoot": "libs/roles/feature-roles/src",
+      "root": "libs/modules/profile/feature-profile-edit",
+      "sourceRoot": "libs/modules/profile/feature-profile-edit/src",
       "prefix": "smec-monorepo",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/roles/feature-roles"],
+          "outputs": ["coverage/libs/modules/profile/feature-profile-edit"],
           "options": {
-            "jestConfig": "libs/roles/feature-roles/jest.config.js",
+            "jestConfig": "libs/modules/profile/feature-profile-edit/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -391,24 +295,24 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/roles/feature-roles/src/**/*.ts",
-              "libs/roles/feature-roles/src/**/*.html"
+              "libs/modules/profile/feature-profile-edit/src/**/*.ts",
+              "libs/modules/profile/feature-profile-edit/src/**/*.html"
             ]
           }
         }
       }
     },
-    "roles-feature-roles-add": {
+    "modules-profile-shell-mobile": {
       "projectType": "library",
-      "root": "libs/roles/feature-roles-add",
-      "sourceRoot": "libs/roles/feature-roles-add/src",
+      "root": "libs/modules/profile/shell-mobile",
+      "sourceRoot": "libs/modules/profile/shell-mobile/src",
       "prefix": "smec-monorepo",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/roles/feature-roles-add"],
+          "outputs": ["coverage/libs/modules/profile/shell-mobile"],
           "options": {
-            "jestConfig": "libs/roles/feature-roles-add/jest.config.js",
+            "jestConfig": "libs/modules/profile/shell-mobile/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -416,24 +320,24 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/roles/feature-roles-add/src/**/*.ts",
-              "libs/roles/feature-roles-add/src/**/*.html"
+              "libs/modules/profile/shell-mobile/src/**/*.ts",
+              "libs/modules/profile/shell-mobile/src/**/*.html"
             ]
           }
         }
       }
     },
-    "roles-feature-roles-edit": {
+    "modules-profile-shell-web": {
       "projectType": "library",
-      "root": "libs/roles/feature-roles-edit",
-      "sourceRoot": "libs/roles/feature-roles-edit/src",
+      "root": "libs/modules/profile/shell-web",
+      "sourceRoot": "libs/modules/profile/shell-web/src",
       "prefix": "smec-monorepo",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/roles/feature-roles-edit"],
+          "outputs": ["coverage/libs/modules/profile/shell-web"],
           "options": {
-            "jestConfig": "libs/roles/feature-roles-edit/jest.config.js",
+            "jestConfig": "libs/modules/profile/shell-web/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -441,24 +345,45 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/roles/feature-roles-edit/src/**/*.ts",
-              "libs/roles/feature-roles-edit/src/**/*.html"
+              "libs/modules/profile/shell-web/src/**/*.ts",
+              "libs/modules/profile/shell-web/src/**/*.html"
             ]
           }
         }
       }
     },
-    "roles-shell-web": {
+    "modules-roles-data-acess": {
+      "root": "libs/modules/roles/data-acess",
+      "sourceRoot": "libs/modules/roles/data-acess/src",
       "projectType": "library",
-      "root": "libs/roles/shell-web",
-      "sourceRoot": "libs/roles/shell-web/src",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/modules/roles/data-acess/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/modules/roles/data-acess"],
+          "options": {
+            "jestConfig": "libs/modules/roles/data-acess/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "modules-roles-feature-permissions": {
+      "projectType": "library",
+      "root": "libs/modules/roles/feature-permissions",
+      "sourceRoot": "libs/modules/roles/feature-permissions/src",
       "prefix": "smec-monorepo",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/roles/shell-web"],
+          "outputs": ["coverage/libs/modules/roles/feature-permissions"],
           "options": {
-            "jestConfig": "libs/roles/shell-web/jest.config.js",
+            "jestConfig": "libs/modules/roles/feature-permissions/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -466,8 +391,229 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/roles/shell-web/src/**/*.ts",
-              "libs/roles/shell-web/src/**/*.html"
+              "libs/modules/roles/feature-permissions/src/**/*.ts",
+              "libs/modules/roles/feature-permissions/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "modules-roles-feature-roles": {
+      "projectType": "library",
+      "root": "libs/modules/roles/feature-roles",
+      "sourceRoot": "libs/modules/roles/feature-roles/src",
+      "prefix": "smec-monorepo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/modules/roles/feature-roles"],
+          "options": {
+            "jestConfig": "libs/modules/roles/feature-roles/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/modules/roles/feature-roles/src/**/*.ts",
+              "libs/modules/roles/feature-roles/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "modules-roles-feature-roles-edit": {
+      "projectType": "library",
+      "root": "libs/modules/roles/feature-roles-edit",
+      "sourceRoot": "libs/modules/roles/feature-roles-edit/src",
+      "prefix": "smec-monorepo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/modules/roles/feature-roles-edit"],
+          "options": {
+            "jestConfig": "libs/modules/roles/feature-roles-edit/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/modules/roles/feature-roles-edit/src/**/*.ts",
+              "libs/modules/roles/feature-roles-edit/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "modules-roles-shell-web": {
+      "projectType": "library",
+      "root": "libs/modules/roles/shell-web",
+      "sourceRoot": "libs/modules/roles/shell-web/src",
+      "prefix": "smec-monorepo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/modules/roles/shell-web"],
+          "options": {
+            "jestConfig": "libs/modules/roles/shell-web/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/modules/roles/shell-web/src/**/*.ts",
+              "libs/modules/roles/shell-web/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "modules-users-data-access": {
+      "root": "libs/modules/users/data-access",
+      "sourceRoot": "libs/modules/users/data-access/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/modules/users/data-access/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/modules/users/data-access"],
+          "options": {
+            "jestConfig": "libs/modules/users/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "modules-users-feature-users": {
+      "projectType": "library",
+      "root": "libs/modules/users/feature-users",
+      "sourceRoot": "libs/modules/users/feature-users/src",
+      "prefix": "smec-monorepo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/modules/users/feature-users"],
+          "options": {
+            "jestConfig": "libs/modules/users/feature-users/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/modules/users/feature-users/src/**/*.ts",
+              "libs/modules/users/feature-users/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "modules-users-feature-users-add": {
+      "projectType": "library",
+      "root": "libs/modules/users/feature-users-add",
+      "sourceRoot": "libs/modules/users/feature-users-add/src",
+      "prefix": "smec-monorepo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/modules/users/feature-users-add"],
+          "options": {
+            "jestConfig": "libs/modules/users/feature-users-add/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/modules/users/feature-users-add/src/**/*.ts",
+              "libs/modules/users/feature-users-add/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "modules-users-feature-users-edit": {
+      "projectType": "library",
+      "root": "libs/modules/users/feature-users-edit",
+      "sourceRoot": "libs/modules/users/feature-users-edit/src",
+      "prefix": "smec-monorepo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/modules/users/feature-users-edit"],
+          "options": {
+            "jestConfig": "libs/modules/users/feature-users-edit/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/modules/users/feature-users-edit/src/**/*.ts",
+              "libs/modules/users/feature-users-edit/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "modules-users-shell-mobile": {
+      "projectType": "library",
+      "root": "libs/modules/users/shell-mobile",
+      "sourceRoot": "libs/modules/users/shell-mobile/src",
+      "prefix": "smec-monorepo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/modules/users/shell-mobile"],
+          "options": {
+            "jestConfig": "libs/modules/users/shell-mobile/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/modules/users/shell-mobile/src/**/*.ts",
+              "libs/modules/users/shell-mobile/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "modules-users-shell-web": {
+      "projectType": "library",
+      "root": "libs/modules/users/shell-web",
+      "sourceRoot": "libs/modules/users/shell-web/src",
+      "prefix": "smec-monorepo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/modules/users/shell-web"],
+          "options": {
+            "jestConfig": "libs/modules/users/shell-web/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/modules/users/shell-web/src/**/*.ts",
+              "libs/modules/users/shell-web/src/**/*.html"
             ]
           }
         }
@@ -493,6 +639,31 @@
             "lintFilePatterns": [
               "libs/shared/angular-material-components/src/**/*.ts",
               "libs/shared/angular-material-components/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "shared-confirm-dialog": {
+      "projectType": "library",
+      "root": "libs/shared/confirm-dialog",
+      "sourceRoot": "libs/shared/confirm-dialog/src",
+      "prefix": "smec-monorepo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/confirm-dialog"],
+          "options": {
+            "jestConfig": "libs/shared/confirm-dialog/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/confirm-dialog/src/**/*.ts",
+              "libs/shared/confirm-dialog/src/**/*.html"
             ]
           }
         }
@@ -560,27 +731,6 @@
           "outputs": ["coverage/libs/shared/guards"],
           "options": {
             "jestConfig": "libs/shared/guards/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "shared-interceptors": {
-      "root": "libs/shared/interceptors",
-      "sourceRoot": "libs/shared/interceptors/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/shared/interceptors/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/interceptors"],
-          "options": {
-            "jestConfig": "libs/shared/interceptors/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -804,152 +954,6 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/smecapp-e2e/**/*.{js,ts}"]
-          }
-        }
-      }
-    },
-    "users-data-access": {
-      "root": "libs/users/data-access",
-      "sourceRoot": "libs/users/data-access/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/users/data-access/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/users/data-access"],
-          "options": {
-            "jestConfig": "libs/users/data-access/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "users-feature-users": {
-      "projectType": "library",
-      "root": "libs/users/feature-users",
-      "sourceRoot": "libs/users/feature-users/src",
-      "prefix": "smec-monorepo",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/users/feature-users"],
-          "options": {
-            "jestConfig": "libs/users/feature-users/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/users/feature-users/src/**/*.ts",
-              "libs/users/feature-users/src/**/*.html"
-            ]
-          }
-        }
-      }
-    },
-    "users-feature-users-add": {
-      "projectType": "library",
-      "root": "libs/users/feature-users-add",
-      "sourceRoot": "libs/users/feature-users-add/src",
-      "prefix": "smec-monorepo",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/users/feature-users-add"],
-          "options": {
-            "jestConfig": "libs/users/feature-users-add/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/users/feature-users-add/src/**/*.ts",
-              "libs/users/feature-users-add/src/**/*.html"
-            ]
-          }
-        }
-      }
-    },
-    "users-feature-users-edit": {
-      "projectType": "library",
-      "root": "libs/users/feature-users-edit",
-      "sourceRoot": "libs/users/feature-users-edit/src",
-      "prefix": "smec-monorepo",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/users/feature-users-edit"],
-          "options": {
-            "jestConfig": "libs/users/feature-users-edit/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/users/feature-users-edit/src/**/*.ts",
-              "libs/users/feature-users-edit/src/**/*.html"
-            ]
-          }
-        }
-      }
-    },
-    "users-shell-mobile": {
-      "projectType": "library",
-      "root": "libs/users/shell-mobile",
-      "sourceRoot": "libs/users/shell-mobile/src",
-      "prefix": "smec-monorepo",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/users/shell-mobile"],
-          "options": {
-            "jestConfig": "libs/users/shell-mobile/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/users/shell-mobile/src/**/*.ts",
-              "libs/users/shell-mobile/src/**/*.html"
-            ]
-          }
-        }
-      }
-    },
-    "users-shell-web": {
-      "projectType": "library",
-      "root": "libs/users/shell-web",
-      "sourceRoot": "libs/users/shell-web/src",
-      "prefix": "smec-monorepo",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/users/shell-web"],
-          "options": {
-            "jestConfig": "libs/users/shell-web/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/users/shell-web/src/**/*.ts",
-              "libs/users/shell-web/src/**/*.html"
-            ]
           }
         }
       }

@@ -24,28 +24,28 @@ const routes: Routes = [
       //   path: 'users',
       //   loadChildren: () =>
       //     import('@smec-monorepo/users/shell-web').then(
-      //       (m) => m.UsersShellWebModule
+      //       (m) => m.ModulesUsersShellWebModule
       //     ),
       // },
       // {
       //   path: 'roles',
       //   loadChildren: () =>
       //     import('@smec-monorepo/roles/shell-web').then(
-      //       (m) => m.RolesShellWebModule
+      //       (m) => m.ModulesRolesShellWebModule
       //     ),
       // },
       {
         path: 'profile',
         loadChildren: () =>
-          import('@smec-monorepo/profile/shell-web').then(
-            (m) => m.ProfileShellWebModule
+          import('@smec-monorepo/modules-profile-shell-web').then(
+            (m) => m.ModulesProfileShellWebModule
           ),
       },
       // {
       //   path: 'api-resources',
       //   loadChildren: () =>
       //     import('@smec-monorepo/claims/shell-web').then(
-      //       (m) => m.ClaimsShellWebModule
+      //       (m) => m.ModulesClaimsShellWebModule
       //     ),
       // },
     ],

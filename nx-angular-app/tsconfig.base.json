@@ -15,42 +15,70 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@smec-monorepo/claims/data-access": [
-        "libs/claims/data-access/src/index.ts"
-      ],
-      "@smec-monorepo/claims/feature-claims": [
-        "libs/claims/feature-claims/src/index.ts"
-      ],
-      "@smec-monorepo/claims/feature-claims-edit": [
-        "libs/claims/feature-claims-edit/src/index.ts"
-      ],
-      "@smec-monorepo/claims/shell-web": ["libs/claims/shell-web/src/index.ts"],
-      "@smec-monorepo/core": ["libs/core/src/index.ts"],
+      "@smec-monorepo/core-app": ["libs/core-app/src/index.ts"],
       "@smec-monorepo/layout": ["libs/layout/src/index.ts"],
-      "@smec-monorepo/profile/feature-profile-edit": [
-        "libs/profile/feature-profile-edit/src/index.ts"
+      "@smec-monorepo/modules-claims-data-access": [
+        "libs/modules/claims/data-access/src/index.ts"
       ],
-      "@smec-monorepo/profile/shell-mobile": [
-        "libs/profile/shell-mobile/src/index.ts"
+      "@smec-monorepo/modules-claims-feature-claims": [
+        "libs/modules/claims/feature-claims/src/index.ts"
       ],
-      "@smec-monorepo/profile/shell-web": [
-        "libs/profile/shell-web/src/index.ts"
+      "@smec-monorepo/modules-claims-feature-claims-edit": [
+        "libs/modules/claims/feature-claims-edit/src/index.ts"
       ],
-      "@smec-monorepo/roles/data-access": [
-        "libs/roles/data-access/src/index.ts"
+      "@smec-monorepo/modules-claims-shell-web": [
+        "libs/modules/claims/shell-web/src/index.ts"
       ],
-      "@smec-monorepo/roles/feature-roles": [
-        "libs/roles/feature-roles/src/index.ts"
+      "@smec-monorepo/modules-profile-feature-profile-edit": [
+        "libs/modules/profile/feature-profile-edit/src/index.ts"
       ],
-      "@smec-monorepo/roles/feature-roles-add": [
-        "libs/roles/feature-roles-add/src/index.ts"
+      "@smec-monorepo/modules-profile-shell-mobile": [
+        "libs/modules/profile/shell-mobile/src/index.ts"
       ],
-      "@smec-monorepo/roles/feature-roles-edit": [
-        "libs/roles/feature-roles-edit/src/index.ts"
+      "@smec-monorepo/modules-profile-shell-web": [
+        "libs/modules/profile/shell-web/src/index.ts"
       ],
-      "@smec-monorepo/roles/shell-web": ["libs/roles/shell-web/src/index.ts"],
+      "@smec-monorepo/modules-roles-data-acess": [
+        "libs/modules/roles/data-acess/src/index.ts"
+      ],
+      "@smec-monorepo/modules-roles-feature-roles": [
+        "libs/modules/roles/feature-roles/src/index.ts"
+      ],
+      "@smec-monorepo/modules-roles-feature-roles-add": [
+        "libs/modules/roles/feature-roles-add/src/index.ts"
+      ],
+      "@smec-monorepo/modules-roles-feature-roles-edit": [
+        "libs/modules/roles/feature-roles-edit/src/index.ts"
+      ],
+      "@smec-monorepo/modules-roles-shell-web": [
+        "libs/modules/roles/shell-web/src/index.ts"
+      ],
+      "@smec-monorepo/modules-users-data-access": [
+        "libs/modules/users/data-access/src/index.ts"
+      ],
+      "@smec-monorepo/modules-users-feature-users": [
+        "libs/modules/users/feature-users/src/index.ts"
+      ],
+      "@smec-monorepo/modules-users-feature-users-add": [
+        "libs/modules/users/feature-users-add/src/index.ts"
+      ],
+      "@smec-monorepo/modules-users-feature-users-edit": [
+        "libs/modules/users/feature-users-edit/src/index.ts"
+      ],
+      "@smec-monorepo/modules-users-shell-mobile": [
+        "libs/modules/users/shell-mobile/src/index.ts"
+      ],
+      "@smec-monorepo/modules-users-shell-web": [
+        "libs/modules/users/shell-web/src/index.ts"
+      ],
+      "@smec-monorepo/modules/roles/feature-permissions": [
+        "libs/modules/roles/feature-permissions/src/index.ts"
+      ],
       "@smec-monorepo/shared/angular-material-components": [
         "libs/shared/angular-material-components/src/index.ts"
+      ],
+      "@smec-monorepo/shared/confirm-dialog": [
+        "libs/shared/confirm-dialog/src/index.ts"
       ],
       "@smec-monorepo/shared/data-access": [
         "libs/shared/data-access/src/index.ts"
@@ -59,29 +87,10 @@
         "libs/shared/environments/src/index.ts"
       ],
       "@smec-monorepo/shared/guards": ["libs/shared/guards/src/index.ts"],
-      "@smec-monorepo/shared/interceptors": [
-        "libs/shared/interceptors/src/index.ts"
-      ],
       "@smec-monorepo/shared/login": ["libs/shared/login/src/index.ts"],
       "@smec-monorepo/shared/models": ["libs/shared/models/src/index.ts"],
       "@smec-monorepo/shared/ui": ["libs/shared/ui/src/index.ts"],
-      "@smec-monorepo/shared/utils": ["libs/shared/utils/src/index.ts"],
-      "@smec-monorepo/users/data-access": [
-        "libs/users/data-access/src/index.ts"
-      ],
-      "@smec-monorepo/users/feature-users": [
-        "libs/users/feature-users/src/index.ts"
-      ],
-      "@smec-monorepo/users/feature-users-add": [
-        "libs/users/feature-users-add/src/index.ts"
-      ],
-      "@smec-monorepo/users/feature-users-edit": [
-        "libs/users/feature-users-edit/src/index.ts"
-      ],
-      "@smec-monorepo/users/shell-mobile": [
-        "libs/users/shell-mobile/src/index.ts"
-      ],
-      "@smec-monorepo/users/shell-web": ["libs/users/shell-web/src/index.ts"]
+      "@smec-monorepo/shared/utils": ["libs/shared/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
