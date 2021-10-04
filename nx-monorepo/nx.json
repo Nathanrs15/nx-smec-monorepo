@@ -1,0 +1,56 @@
+{
+  "npmScope": "smec-monorepo",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "projects": {
+    "adminapp": {
+      "tags": ["scope:admin"]
+    },
+    "adminapp-e2e": {
+      "tags": ["scope:admin"],
+      "implicitDependencies": ["adminapp"]
+    },
+    "core-app": {
+      "tags": ["scope:shared"]
+    },
+    "fuse": {
+      "tags": ["scope:shared"]
+    },
+    "layout": {
+      "tags": ["scope:shared"]
+    },
+    "modules-auth": {
+      "tags": ["scope:shared"]
+    },
+    "modules-users": {
+      "tags": ["scope:admin"]
+    },
+    "shared": {
+      "tags": ["scope:shared"]
+    }
+  }
+}

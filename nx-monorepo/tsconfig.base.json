@@ -1,0 +1,33 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2017",
+    "module": "es2020",
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
+    "outDir": "./dist/out-tsc",
+    "downlevelIteration": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "lib": ["es2018", "dom"],
+    "paths": {
+      "@fuse/*": ["libs/fuse/src/lib/*"],
+      "@smec-monorepo/core-app": ["libs/core-app/src/index.ts"],
+      "@smec-monorepo/fuse": ["libs/fuse/src/index.ts"],
+      "@smec-monorepo/layout": ["libs/layout/src/index.ts"],
+      "@smec-monorepo/modules/auth": ["libs/modules/auth/src/index.ts"],
+      "@smec-monorepo/modules/users": ["libs/modules/users/src/index.ts"],
+      "@smec-monorepo/shared": ["libs/shared/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

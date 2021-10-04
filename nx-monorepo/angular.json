@@ -1,0 +1,323 @@
+{
+  "version": 1,
+  "projects": {
+    "adminapp": {
+      "projectType": "application",
+      "root": "apps/adminapp",
+      "sourceRoot": "apps/adminapp/src",
+      "prefix": "smec-monorepo",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/adminapp",
+            "index": "apps/adminapp/src/index.html",
+            "main": "apps/adminapp/src/main.ts",
+            "polyfills": "apps/adminapp/src/polyfills.ts",
+            "tsConfig": "apps/adminapp/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "allowedCommonJsDependencies": ["highlight.js"],
+            "assets": [
+              "apps/adminapp/src/favicon-16x16.png",
+              "apps/adminapp/src/favicon-32x32.png",
+              "apps/adminapp/src/assets"
+            ],
+            "styles": [
+              "libs/fuse/src/lib/styles/tailwind.scss",
+              "libs/fuse/src/lib/styles/themes.scss",
+              "apps/adminapp/src/styles/vendors.scss",
+              "libs/fuse/src/lib/styles/main.scss",
+              "apps/adminapp/src/styles/styles.scss",
+              "apps/adminapp/src/styles/tailwind.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/fuse/src/lib/styles"]
+            },
+            "extractCss": true,
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "libs/shared/src/lib/environments/environment.ts",
+                  "with": "libs/shared/src/lib/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "frontend:build",
+            "sslKey": "ssl/server.key",
+            "sslCert": "ssl/server.crt"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "adminapp:build:production"
+            },
+            "development": {
+              "browserTarget": "adminapp:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "adminapp:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/adminapp/src/**/*.ts",
+              "apps/adminapp/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/adminapp"],
+          "options": {
+            "jestConfig": "apps/adminapp/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "adminapp-e2e": {
+      "root": "apps/adminapp-e2e",
+      "sourceRoot": "apps/adminapp-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/adminapp-e2e/cypress.json",
+            "devServerTarget": "adminapp:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "adminapp:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/adminapp-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "core-app": {
+      "projectType": "library",
+      "root": "libs/core-app",
+      "sourceRoot": "libs/core-app/src",
+      "prefix": "smec-monorepo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/core-app"],
+          "options": {
+            "jestConfig": "libs/core-app/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/core-app/src/**/*.ts",
+              "libs/core-app/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "fuse": {
+      "projectType": "library",
+      "root": "libs/fuse",
+      "sourceRoot": "libs/fuse/src",
+      "prefix": "smec-monorepo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/fuse"],
+          "options": {
+            "jestConfig": "libs/fuse/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/fuse/src/**/*.ts",
+              "libs/fuse/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "layout": {
+      "projectType": "library",
+      "root": "libs/layout",
+      "sourceRoot": "libs/layout/src",
+      "prefix": "smec-monorepo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/layout"],
+          "options": {
+            "jestConfig": "libs/layout/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/layout/src/**/*.ts",
+              "libs/layout/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "modules-auth": {
+      "root": "libs/modules/auth",
+      "sourceRoot": "libs/modules/auth/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/modules/auth/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/modules/auth"],
+          "options": {
+            "jestConfig": "libs/modules/auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "modules-users": {
+      "root": "libs/modules/users",
+      "sourceRoot": "libs/modules/users/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/modules/users/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/modules/users"],
+          "options": {
+            "jestConfig": "libs/modules/users/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared": {
+      "root": "libs/shared",
+      "sourceRoot": "libs/shared/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared"],
+          "options": {
+            "jestConfig": "libs/shared/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false,
+    "defaultCollection": "@nrwl/angular",
+    "packageManager": "npm"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    },
+    "@schematics/angular:component": {
+      "style": "scss",
+      "skipTests": true,
+      "skipImport": true
+    },
+    "@schematics/angular:application": {
+      "strict": true
+    },
+    "@schematics/angular:service": {
+      "skipTests": true
+    }
+  },
+  "defaultProject": "smec"
+}
