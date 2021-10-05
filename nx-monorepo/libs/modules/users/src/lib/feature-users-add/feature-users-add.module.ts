@@ -7,6 +7,8 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 
 import { UserService } from '../data-access';
 import { UserAddPage } from './pages';
+import { UserFormComponent } from './components';
+
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,6 +18,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 
 const PAGES = [UserAddPage];
+const COMPONENTS = [UserFormComponent];
 
 const routes: Routes = [
   {
@@ -35,7 +38,7 @@ const MATERIAL = [
 ];
 
 @NgModule({
-  declarations: [...PAGES],
+  declarations: [...PAGES, ...COMPONENTS],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

@@ -34,9 +34,9 @@ const routes: Routes = [
   {
     path: 'app',
     component: LayoutComponent,
-    // data: {
-    //   layout: 'classic',
-    // },
+    data: {
+      layout: 'classic',
+    },
     canActivate: [AuthenticationGuard],
 
     resolve: {
@@ -48,6 +48,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('@smec-monorepo/modules/users').then(
             (m) => m.UsersShellWebModule
+          ),
+      },
+      {
+        path: 'roles',
+        loadChildren: () =>
+          import('@smec-monorepo/modules/roles').then(
+            (m) => m.RolesShellWebModule
           ),
       },
     ],

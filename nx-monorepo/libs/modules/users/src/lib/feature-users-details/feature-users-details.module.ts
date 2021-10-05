@@ -23,6 +23,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 const routes: Routes = [
   {
@@ -49,6 +50,7 @@ const MATERIAL = [
   MatSelectModule,
   MatTableModule,
   MatCheckboxModule,
+  MatSlideToggleModule,
 ];
 
 @NgModule({

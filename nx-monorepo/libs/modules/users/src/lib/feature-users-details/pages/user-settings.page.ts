@@ -7,36 +7,43 @@ import { Observable, Subscription } from 'rxjs';
 @Component({
   template: `
     <ng-container *ngIf="userRoles$ | async as data; else empty">
-      <div
-        class="sm:absolute sm:inset-0 flex flex-col flex-auto min-w-0 sm:overflow-hidden bg-card dark:bg-transparent"
-      >
+      <div class="flex flex-col flex-auto min-w-0">
         <!-- Header -->
         <div
-          class="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between p-6 sm:py-12 md:px-8 border-b bg-card dark:bg-transparent"
+          class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent"
         >
-          <!-- Title -->
-          <div>
-            <div class="text-4xl font-extrabold tracking-tight leading-none">
-              Usuarios
-            </div>
-            <div class="flex items-center mt-0.5 font-medium text-secondary">
-              <!-- Breadcrumbs -->
-              <div class="flex items-center space-x-2">
+          <div class="flex-1 min-w-0">
+            <!-- Breadcrumbs -->
+            <div class="flex flex-wrap items-center font-medium">
+              <div>
                 <a
-                  class="text-primary cursor-pointer"
+                  class="whitespace-nowrap text-primary-500"
                   [routerLink]="['/app/users']"
-                  >Usuarios
-                </a>
-                <div class="">/</div>
+                  >Usuarios</a
+                >
+              </div>
+              <div class="flex items-center ml-1 whitespace-nowrap">
+                <mat-icon
+                  class="icon-size-5 text-secondary"
+                  [svgIcon]="'heroicons_solid:chevron-right'"
+                ></mat-icon>
                 <div>Editar usuario</div>
               </div>
+            </div>
+            <!-- Title -->
+            <div class="mt-2">
+              <h2
+                class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate"
+              >
+                Usuarios
+              </h2>
             </div>
           </div>
         </div>
 
         <!-- Main -->
-        <div class="flex flex-auto overflow-hidden">
-          <div class="grid">
+        <div class="flex-auto p-6 sm:p-10">
+          <div class="max-w-3xl">
             <app-userinfo [userId]="data.userId"></app-userinfo>
             <app-reset-password [userId]="userId"></app-reset-password>
 

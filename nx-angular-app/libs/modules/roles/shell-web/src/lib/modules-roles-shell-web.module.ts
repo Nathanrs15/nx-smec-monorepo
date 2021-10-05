@@ -38,7 +38,7 @@ const routes: Routes = [
         (m) => m.ModulesRolesFeatureRolesEditModule
       ),
     data: {
-      permissions: { only: 'Roles.Crete', redirectTo: '' },
+      permissions: { only: 'Roles.Create', redirectTo: '' },
       title: 'Añadir rol',
     },
     canActivate: [NgxPermissionsGuard],

@@ -57,7 +57,7 @@ import { UserService, User } from '../../data-access';
                     [placeholder]="'Buscar usuarios'"
                   />
                 </mat-form-field>
-                <!-- Add product button -->
+                <!-- Add role button -->
                 <button
                   class="ml-4"
                   mat-flat-button

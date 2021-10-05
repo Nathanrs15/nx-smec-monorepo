@@ -46,6 +46,12 @@
     "modules-auth": {
       "tags": ["scope:shared"]
     },
+    "modules-claims": {
+      "tags": []
+    },
+    "modules-roles": {
+      "tags": ["scope:admin"]
+    },
     "modules-users": {
       "tags": ["scope:admin"]
     },

@@ -8,11 +8,13 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { CoreAppModule } from '@smec-monorepo/core-app';
 import { LayoutModule } from '@smec-monorepo/layout';
+import { FuseModule } from '@smec-monorepo/fuse';
 
 const MODULES = [
   BrowserModule,
   BrowserAnimationsModule,
   AppRoutingModule,
+  FuseModule,
   CoreAppModule,
   LayoutModule,
 ];

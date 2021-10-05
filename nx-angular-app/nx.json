@@ -37,6 +37,9 @@
     "core-app": {
       "tags": ["scope:shared"]
     },
+    "fuse": {
+      "tags": ["scope:shared"]
+    },
     "layout": {
       "tags": ["scope:shared"]
     },

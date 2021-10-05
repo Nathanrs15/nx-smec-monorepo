@@ -34,8 +34,7 @@ import { RolesFeatureService } from '@smec-monorepo/modules-roles-data-acess';
           <th mat-header-cell *matHeaderCellDef>
             <button
               mat-icon-button
-              routerLink="./add-role"
-              [disabled]="!hasPermission.canCreateRole"
+              routerLink="add-role"
             >
               <mat-icon>add_circle</mat-icon>
             </button>

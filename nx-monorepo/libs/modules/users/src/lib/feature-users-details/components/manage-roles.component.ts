@@ -8,46 +8,64 @@ import {
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import {
-  UpdateUserRoles,
-  UserRoles,
-  UserService,
-} from '../../data-access';
+import { UpdateUserRoles, UserRoles, UserService } from '../../data-access';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'app-manage-roles',
   template: `
-    <h2 class="view-title">Roles de usuario</h2>
-
-    <mat-card class="table-card">
-      <form novalidate [formGroup]="checkForm" (ngSubmit)="onSubmit()">
-        <table mat-table fixedLayout [dataSource]="userRoles.userRoles">
-          <ng-container matColumnDef="roleName">
-            <th mat-header-cell *matHeaderCellDef>Rol</th>
-            <td mat-cell *matCellDef="let element">{{ element.roleName }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="selected">
-            <th mat-header-cell *matHeaderCellDef>
-              <button mat-icon-button type="submit" [disabled]="disableform">
-                <mat-icon>save</mat-icon>
-              </button>
-            </th>
-            <td mat-cell *matCellDef="let element">
-              <mat-checkbox
-                [name]="element.roleName"
-                [formControlName]="element.roleName"
-              >
-              </mat-checkbox>
-            </td>
-          </ng-container>
-
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-        </table>
-      </form>
-    </mat-card>
+    <form
+      class="flex flex-col mt-4 px-8 pt-10 bg-card shadow rounded overflow-hidden"
+      novalidate
+      [formGroup]="checkForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="flex flex-col gt-xs:flex-row gt-xs:items-start">
+        <div class="gt-xs:max-w-80 gt-xs:pr-12">
+          <p class="text-lg font-medium">Roles</p>
+          <p class="text-secondary mb-6">Asignar roles de usuario.</p>
+        </div>
+        <div class="flex-auto min-w-64">
+          <div class="flex flex-col">
+            <div class="flex flex-col">
+              <ng-container *ngFor="let item of userRoles.userRoles">
+                <div class="grid grid-cols-1 gap-4 w-full mt-4">
+                  <div class="flex items-center justify-between">
+                    <div
+                      class="flex-auto leading-6 cursor-pointer"
+                      (click)="rol.toggle()"
+                    >
+                      {{ item.roleName }}
+                    </div>
+                    <mat-slide-toggle
+                      class="ml-2"
+                      [color]="'primary'"
+                      [name]="item.roleName"
+                      [formControlName]="item.roleName"
+                      #rol
+                    >
+                    </mat-slide-toggle>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex items-center justify-end border-t -mx-8 mt-8 px-8 py-5 bg-gray-50 dark:bg-gray-700"
+      >
+        <button
+          type="submit"
+          class="px-6 ml-3"
+          mat-flat-button
+          [color]="'primary'"
+          [disabled]="disableform"
+        >
+          Guardar
+        </button>
+      </div>
+    </form>
   `,
   styles: [
     `

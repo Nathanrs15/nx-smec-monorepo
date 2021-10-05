@@ -60,6 +60,7 @@ import { User, UserService } from '../../data-access';
         <tr
           mat-header-row
           *matHeaderRowDef="displayedColumns; sticky: true"
+          class="z-10 sticky md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5"
         ></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
@@ -74,7 +75,7 @@ import { User, UserService } from '../../data-access';
           [disabled]="!hasPermission.canEditUserRoles"
         >
           <mat-icon>settings</mat-icon>
-          <span>Administrar roles</span>
+          <span>Administrar usuario</span>
         </button>
       </ng-template>
     </mat-menu>

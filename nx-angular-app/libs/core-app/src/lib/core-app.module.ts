@@ -1,7 +1,5 @@
-import { NgModule, LOCALE_ID } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { NgModule, LOCALE_ID, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import {
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
@@ -13,13 +11,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatMenuModule } from '@angular/material/menu';
 
-import { AuthInterceptor } from './auth';
-
 import { NgxPermissionsModule } from 'ngx-permissions';
+import { AuthModule } from './auth/auth.module';
 import { IconsModule } from './icons/icons.module';
 
 const PROVIDERS = [
-  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   { provide: MAT_DATE_LOCALE, useValue: 'es' },
   {
     provide: DateAdapter,
@@ -38,8 +34,8 @@ const OVERLAY = [
 
 const MODULES = [
   CommonModule,
+  AuthModule,
   IconsModule,
-  HttpClientModule,
   NgxPermissionsModule.forRoot(),
 ];
 
@@ -48,4 +44,15 @@ const MODULES = [
   exports: [...OVERLAY],
   providers: [...PROVIDERS],
 })
-export class CoreAppModule {}
+export class CoreAppModule {
+  constructor(
+    @Optional() @SkipSelf() parentModule?: CoreAppModule
+)
+{
+    // Do not allow multiple injections
+    if ( parentModule )
+    {
+        throw new Error('CoreModule has already been loaded. Import this module in the AppModule only.');
+    }
+}
+}

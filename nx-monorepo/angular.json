@@ -233,6 +233,52 @@
         }
       }
     },
+    "modules-claims": {
+      "projectType": "library",
+      "root": "libs/modules/claims",
+      "sourceRoot": "libs/modules/claims/src",
+      "prefix": "smec-monorepo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/modules/claims"],
+          "options": {
+            "jestConfig": "libs/modules/claims/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/modules/claims/src/**/*.ts",
+              "libs/modules/claims/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "modules-roles": {
+      "root": "libs/modules/roles",
+      "sourceRoot": "libs/modules/roles/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/modules/roles/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/modules/roles"],
+          "options": {
+            "jestConfig": "libs/modules/roles/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "modules-users": {
       "root": "libs/modules/users",
       "sourceRoot": "libs/modules/users/src",

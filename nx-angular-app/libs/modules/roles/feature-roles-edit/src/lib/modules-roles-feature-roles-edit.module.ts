@@ -13,6 +13,7 @@ import { RolesFeatureService } from '@smec-monorepo/modules-roles-data-acess';
 import { RoleAddEditPage } from './pages';
 
 const routes: Routes = [
+  // { path: ':id', pathMatch: 'full', component: RoleAddEditPage },
   { path: '', pathMatch: 'full', component: RoleAddEditPage },
 ];
 

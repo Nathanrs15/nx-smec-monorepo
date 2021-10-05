@@ -13,31 +13,43 @@ import { Observable } from 'rxjs';
   selector: 'app-userinfo',
   template: `
     <ng-container *ngIf="userInfo$ | async as data">
-      <h2 class="view-title">Información de usuario</h2>
+      <form
+        class="flex flex-col mt-4 px-8 pt-10 bg-card shadow rounded overflow-hidden"
+      >
+        <p class="text-lg font-medium">Información de usuario</p>
+        <p class="text-secondary mb-6">
+          La siguiente información no es editable.
+        </p>
+        <div class="flex flex-col gt-xs:flex-row">
+          <mat-form-field class="flex-auto gt-xs:pr-3">
+            <input
+              matInput
+              [placeholder]="'Nombre de usuario'"
+              [value]="data.user.userName"
+              disabled
+            />
+            <mat-icon
+              class="icon-size-5"
+              matPrefix
+              [svgIcon]="'heroicons_solid:user'"
+            ></mat-icon>
+          </mat-form-field>
 
-      <mat-card>
-        <mat-card-content>
-          <form class="custom-form">
-            <div fxLayout="column" fxLayoutAlign="space-around start">
-              <div [fxLayout]="(breakpoint$ | async) ? 'column' : 'row'" fxFill>
-                <mat-form-field
-                  appearance="outline"
-                  color="accent"
-                  style="margin-right: 1em;"
-                >
-                  <mat-label>Nombre de usuario</mat-label>
-                  <input matInput [value]="data.user.userName" disabled />
-                </mat-form-field>
-
-                <mat-form-field appearance="outline" color="accent">
-                  <mat-label>Correo electrónico</mat-label>
-                  <input matInput [value]="data.user.email" disabled />
-                </mat-form-field>
-              </div>
-            </div>
-          </form>
-        </mat-card-content>
-      </mat-card>
+          <mat-form-field class="flex-auto gt-xs:pl-3">
+            <input
+              matInput
+              [placeholder]="'Correo electrónico'"
+              [value]="data.user.email"
+              disabled
+            />
+            <mat-icon
+              class="icon-size-5"
+              matPrefix
+              [svgIcon]="'heroicons_solid:mail'"
+            ></mat-icon>
+          </mat-form-field>
+        </div>
+      </form>
     </ng-container>
   `,
   styles: [],

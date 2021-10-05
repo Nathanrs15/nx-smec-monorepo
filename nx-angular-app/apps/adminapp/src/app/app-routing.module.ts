@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DefaultLayoutComponent } from '@smec-monorepo/layout';
+import { LayoutComponent } from '@smec-monorepo/layout';
 
 import {
   AuthenticationGuard,
@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'app',
-    component: DefaultLayoutComponent,
+    component: LayoutComponent,
     canActivate: [AuthenticationGuard],
     children: [
       {

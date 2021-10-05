@@ -1,0 +1,39 @@
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { BlockScrollStrategy, Overlay } from '@angular/cdk/overlay';
+import {
+  MAT_AUTOCOMPLETE_SCROLL_STRATEGY,
+  MatAutocompleteModule,
+} from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchComponent } from './search.component';
+import { CommonModule } from '@angular/common';
+
+@NgModule({
+  declarations: [SearchComponent],
+  imports: [
+    CommonModule,
+    RouterModule.forChild([]),
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  exports: [SearchComponent],
+  providers: [
+    {
+      provide: MAT_AUTOCOMPLETE_SCROLL_STRATEGY,
+      useFactory: (overlay: Overlay) => (): BlockScrollStrategy =>
+        overlay.scrollStrategies.block(),
+      deps: [Overlay],
+    },
+  ],
+})
+export class SearchModule {}
