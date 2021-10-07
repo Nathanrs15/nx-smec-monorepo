@@ -233,6 +233,27 @@
         }
       }
     },
+    "modules-cems-history-graph": {
+      "root": "libs/modules/cems/history-graph",
+      "sourceRoot": "libs/modules/cems/history-graph/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/modules/cems/history-graph/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/modules/cems/history-graph"],
+          "options": {
+            "jestConfig": "libs/modules/cems/history-graph/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "modules-claims": {
       "projectType": "library",
       "root": "libs/modules/claims",

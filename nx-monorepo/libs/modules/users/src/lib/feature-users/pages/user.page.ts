@@ -5,81 +5,67 @@ import { UserService, User } from '../../data-access';
 
 @Component({
   template: `
-    <div
-      class="sm:absolute sm:inset-0 flex flex-col flex-auto min-w-0 sm:overflow-hidden bg-card dark:bg-transparent"
-    >
-      <ng-container *ngIf="UIState$ | async as state">
-        <!-- empty state -->
-        <ng-container *ngIf="state === UIStates.empty">
-          No hay nada
-        </ng-container>
-
-        <!-- loading state -->
-        <ng-container *ngIf="state === UIStates.loading">
-          <!-- <app-user-loading-state></app-user-loading-state> -->
-          Cargando ...
-        </ng-container>
-
-        <!-- loaded state -->
-        <ng-container *ngIf="users$ | async as users">
-          <ng-container *ngIf="state === UIStates.loaded">
-            <!-- Header -->
-            <div
-              class="relative flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between py-8 px-6 md:px-8 border-b"
-            >
-              <!-- Title -->
-              <div>
-                <div class="text-4xl font-extrabold tracking-tight">
-                  Usuarios
-                </div>
-                <div
-                  class="flex items-center mt-0.5 font-medium text-secondary"
-                >
-                  <ng-container *ngIf="users.length">
-                    {{ users.length }} usuarios en total
-                  </ng-container>
-                </div>
+    <ng-container *ngIf="users$ | async as users">
+      <div class="flex flex-col flex-auto w-full">
+        <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+          <!-- Title and action buttons -->
+          <div class="flex items-center justify-between w-full">
+            <div>
+              <div class="text-3xl font-semibold tracking-tight leading-8">
+                Usuarios
               </div>
-              <!-- Actions -->
-              <div class="flex flex-shrink-0 items-center mt-6 sm:mt-0 sm:ml-4">
-                <!-- Search -->
-                <mat-form-field
-                  class="fuse-mat-dense fuse-mat-no-subscript fuse-mat-rounded min-w-64"
-                >
-                  <mat-icon
-                    class="icon-size-5"
-                    matPrefix
-                    [svgIcon]="'heroicons_solid:search'"
-                  ></mat-icon>
-                  <input
-                    matInput
-                    [autocomplete]="'off'"
-                    [placeholder]="'Buscar usuarios'"
-                  />
-                </mat-form-field>
-                <!-- Add role button -->
-                <button
-                  class="ml-4"
-                  mat-flat-button
-                  [color]="'primary'"
-                  routerLink="./add-user"
-                >
-                  <mat-icon [svgIcon]="'heroicons_outline:plus'"></mat-icon>
-                  <span class="ml-2 mr-1">Añadir</span>
-                </button>
+              <div class="font-medium tracking-tight text-secondary">
+                <ng-container *ngIf="users.length">
+                  {{ users.length }} usuarios en total
+                </ng-container>
               </div>
             </div>
-
-            <!-- Main -->
-            <div class="flex flex-auto overflow-hidden">
-              <div class="grid">
+            <div class="flex items-center ml-6">
+              <!-- Search -->
+              <mat-form-field
+                class="fuse-mat-dense fuse-mat-no-subscript fuse-mat-rounded min-w-64"
+              >
+                <mat-icon
+                  class="icon-size-5"
+                  matPrefix
+                  [svgIcon]="'heroicons_solid:search'"
+                ></mat-icon>
+                <input
+                  matInput
+                  [autocomplete]="'off'"
+                  [placeholder]="'Buscar usuarios'"
+                />
+              </mat-form-field>
+              <button
+                class="ml-4"
+                mat-flat-button
+                [color]="'primary'"
+                routerLink="./add-user"
+              >
+                <mat-icon [svgIcon]="'heroicons_outline:plus'"></mat-icon>
+                <span class="ml-2 mr-1">Añadir</span>
+              </button>
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-8"
+          >
+            <div
+              class="sm:col-span-6 flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden"
+            >
+              <div
+                class="text-lg font-medium tracking-tight leading-6 truncate"
+              >
+                Lista de usuarios
+              </div>
+              <div class="flex flex-col flex-auto mt-2 overflow-x-auto">
                 <app-user-list [users]="users"> </app-user-list>
               </div>
             </div>
-          </ng-container>
-        </ng-container>
-      </ng-container>
-    </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
   `,
 })
 export class UserPage implements OnInit {

@@ -1,0 +1,218 @@
+<div class="flex flex-col flex-auto w-full">
+  <!-- Drawer -->
+  <mat-drawer-container class="flex-auto h-full">
+    <!-- Drawer -->
+    <mat-drawer
+      class="w-full md:w-120 dark:bg-gray-900"
+      [autoFocus]="false"
+      [mode]="drawerMode"
+      [opened]="drawerOpened"
+      [position]="'start'"
+      #matDrawer
+    >
+      <!-- SIDEBAR CONTENR HERE-->
+      <div class="flex flex-col flex-auto w-full">
+        <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+          <!-- Title and action buttons -->
+          <div class="flex items-center justify-between w-full">
+            <div>
+              <div class="mt-2 text-3xl font-semibold tracking-tight leading-8">
+                Ajustes
+              </div>
+              <!-- <div class="font-medium tracking-tight text-secondary"></div> -->
+            </div>
+            <div class="flex items-center ml-6">
+              <button mat-icon-button [routerLink]="['../../']">
+                <mat-icon [svgIcon]="'heroicons_outline:x'"></mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="w-full max-w-3xl">
+            <div class="mt-8">
+              <filters-drawer></filters-drawer>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-drawer>
+    <!-- Drawer content -->
+    <mat-drawer-content class="flex flex-col overflow-hidden">
+      <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+        <!-- Title and action buttons -->
+        <div class="flex items-center justify-between w-full">
+          <div>
+            <div class="text-3xl font-semibold tracking-tight leading-8">
+              Gráfica de históricos
+            </div>
+            <div class="font-medium tracking-tight text-secondary">
+              Supervisar las métricas, comprobar los informes y revisar el
+              rendimiento
+            </div>
+          </div>
+          <div class="flex items-center ml-6">
+            <button
+              class="hidden sm:inline-flex"
+              mat-stroked-button
+              (click)="matDrawer.toggle()"
+            >
+              <mat-icon
+                class="icon-size-5"
+                [svgIcon]="'heroicons_solid:cog'"
+              ></mat-icon>
+              <span class="ml-2">Settings</span>
+            </button>
+            <button
+              class="hidden sm:inline-flex ml-3"
+              mat-flat-button
+              [color]="'primary'"
+            >
+              <mat-icon
+                class="icon-size-5"
+                [svgIcon]="'heroicons_solid:save'"
+              ></mat-icon>
+              <span class="ml-2">Export</span>
+            </button>
+
+            <!-- Actions menu (visible on xs) -->
+            <div class="sm:hidden">
+              <button [matMenuTriggerFor]="actionsMenu" mat-icon-button>
+                <mat-icon
+                  [svgIcon]="'heroicons_outline:dots-vertical'"
+                ></mat-icon>
+              </button>
+              <mat-menu #actionsMenu="matMenu">
+                <button mat-menu-item>Exportar</button>
+                <button mat-menu-item>Ajustes</button>
+              </mat-menu>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gráfica comparativa -->
+        <div
+          class="
+            flex flex-col flex-auto
+            mt-8
+            bg-card
+            shadow
+            rounded-2xl
+            overflow-hidden
+          "
+        >
+          <div class="flex items-start justify-between m-6 mb-0">
+            <div class="text-lg font-medium tracking-tight leading-6 truncate">
+              Gráfica comparativa
+            </div>
+            <div class="ml-2">
+              <button
+                class="h-6 min-h-6 px-2 rounded-full bg-hover"
+                mat-button
+                [matMenuTriggerFor]="conversionMenu"
+              >
+                <span class="font-medium text-sm text-secondary">30 days</span>
+              </button>
+              <mat-menu #conversionMenu="matMenu">
+                <button mat-menu-item>30 days</button>
+                <button mat-menu-item>3 months</button>
+                <button mat-menu-item>9 months</button>
+              </mat-menu>
+            </div>
+          </div>
+          <div class="flex items-start mt-6 mx-6">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12">
+              <div class="flex flex-col">
+                <div class="flex items-center">
+                  <div class="font-medium text-secondary leading-5">Máximo</div>
+                  <mat-icon
+                    class="ml-1.5 icon-size-4 text-hint"
+                    [svgIcon]="'heroicons_solid:information-circle'"
+                    [matTooltip]="
+                      'Score is calculated by using the historical ratio between Page Views and Visitors. Best score is 1000, worst score is 0.'
+                    "
+                  ></mat-icon>
+                </div>
+                <div class="flex items-start mt-2">
+                  <div class="text-4xl font-bold tracking-tight leading-none">
+                    57280,4
+                  </div>
+                  <div class="flex items-center ml-2">
+                    <mat-icon
+                      class="icon-size-5 text-green-500"
+                      [svgIcon]="'heroicons_solid:arrow-circle-up'"
+                    ></mat-icon>
+                    <div class="ml-1 text-md font-medium text-green-500">
+                      42.9%
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col">
+                <div class="flex items-center">
+                  <div class="font-medium text-secondary leading-5">Mínimo</div>
+                  <mat-icon
+                    class="ml-1.5 icon-size-4 text-hint"
+                    [svgIcon]="'heroicons_solid:information-circle'"
+                    [matTooltip]="
+                      'Average Ratio is the average ratio between Page Views and Visitors'
+                    "
+                  ></mat-icon>
+                </div>
+                <div class="flex items-start mt-2">
+                  <div class="text-4xl font-bold tracking-tight leading-none">
+                    53244,5
+                  </div>
+                  <div class="flex items-center ml-2">
+                    <mat-icon
+                      class="icon-size-5 text-red-500"
+                      [svgIcon]="'heroicons_solid:arrow-circle-down'"
+                    ></mat-icon>
+                    <div class="ml-1 text-md font-medium text-red-500">
+                      13.1%
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col">
+                <div class="flex items-center">
+                  <div class="font-medium text-secondary leading-5">Media</div>
+                  <mat-icon
+                    class="ml-1.5 icon-size-4 text-hint"
+                    [svgIcon]="'heroicons_solid:information-circle'"
+                    [matTooltip]="
+                      'Predicted Ratio is calculated by using historical ratio, current trends and your goal targets.'
+                    "
+                  ></mat-icon>
+                </div>
+                <div class="flex items-start mt-2">
+                  <div class="text-4xl font-bold tracking-tight leading-none">
+                    56146,74
+                  </div>
+                  <div class="flex items-center ml-2">
+                    <mat-icon
+                      class="icon-size-5 text-green-500"
+                      [svgIcon]="'heroicons_solid:arrow-circle-up'"
+                    ></mat-icon>
+                    <div class="ml-1 text-md font-medium text-green-500">
+                      22.2%
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col flex-auto h-80 mt-3">
+            <ng-container *ngIf="chart$ | async">
+              <time-based-graph
+                class="flex-auto w-full h-full"
+                [id]="chartId"
+                [chartData]="chartData"
+                [chartValues]="chartValues"
+              ></time-based-graph>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

@@ -25,6 +25,9 @@
       "@smec-monorepo/fuse": ["libs/fuse/src/index.ts"],
       "@smec-monorepo/layout": ["libs/layout/src/index.ts"],
       "@smec-monorepo/modules/auth": ["libs/modules/auth/src/index.ts"],
+      "@smec-monorepo/modules/cems/history-graph": [
+        "libs/modules/cems/history-graph/src/index.ts"
+      ],
       "@smec-monorepo/modules/claims": ["libs/modules/claims/src/index.ts"],
       "@smec-monorepo/modules/roles": ["libs/modules/roles/src/index.ts"],
       "@smec-monorepo/modules/users": ["libs/modules/users/src/index.ts"],

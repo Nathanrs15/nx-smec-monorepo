@@ -13,43 +13,45 @@ import { Observable } from 'rxjs';
   selector: 'app-userinfo',
   template: `
     <ng-container *ngIf="userInfo$ | async as data">
-      <form
-        class="flex flex-col mt-4 px-8 pt-10 bg-card shadow rounded overflow-hidden"
-      >
-        <p class="text-lg font-medium">Información de usuario</p>
-        <p class="text-secondary mb-6">
-          La siguiente información no es editable.
-        </p>
-        <div class="flex flex-col gt-xs:flex-row">
-          <mat-form-field class="flex-auto gt-xs:pr-3">
-            <input
-              matInput
-              [placeholder]="'Nombre de usuario'"
-              [value]="data.user.userName"
-              disabled
-            />
-            <mat-icon
-              class="icon-size-5"
-              matPrefix
-              [svgIcon]="'heroicons_solid:user'"
-            ></mat-icon>
-          </mat-form-field>
+      <div class="w-full max-w-3xl">
+        <form>
+          <!-- Section -->
+          <div class="w-full">
+            <div class="text-xl">Información Básica</div>
+            <div class="text-secondary">
+              La siguiente información no es editable.
+            </div>
+          </div>
 
-          <mat-form-field class="flex-auto gt-xs:pl-3">
-            <input
-              matInput
-              [placeholder]="'Correo electrónico'"
-              [value]="data.user.email"
-              disabled
-            />
-            <mat-icon
-              class="icon-size-5"
-              matPrefix
-              [svgIcon]="'heroicons_solid:mail'"
-            ></mat-icon>
-          </mat-form-field>
-        </div>
-      </form>
+          <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
+            <!-- userName -->
+            <div class="sm:col-span-4">
+              <mat-form-field class="w-full">
+                <mat-label>Nombre de usuario</mat-label>
+                <input matInput [value]="data.user.userName" disabled />
+                <mat-icon
+                  class="icon-size-5"
+                  matPrefix
+                  [svgIcon]="'heroicons_solid:user'"
+                ></mat-icon>
+              </mat-form-field>
+            </div>
+
+            <!-- email -->
+            <div class="sm:col-span-4">
+              <mat-form-field class="w-full">
+                <mat-label>Correo electrónico</mat-label>
+                <input matInput [value]="data.user.email" disabled />
+                <mat-icon
+                  class="icon-size-5"
+                  matPrefix
+                  [svgIcon]="'heroicons_solid:mail'"
+                ></mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+        </form>
+      </div>
     </ng-container>
   `,
   styles: [],

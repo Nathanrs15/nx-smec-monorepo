@@ -22,128 +22,179 @@ import { Role, UserService } from '../../data-access';
 @Component({
   selector: 'user-form',
   template: `
-    <form
-      class="flex flex-col mt-4 px-8 pt-10 bg-card shadow rounded overflow-hidden"
-      [formGroup]="formGroup"
-      #form="ngForm"
-      (ngSubmit)="onSubmit()"
-    >
-      <div class="flex flex-col gt-xs:flex-row">
-        <mat-form-field class="flex-auto gt-xs:pr-3">
-          <input
-            matInput
-            [placeholder]="'Nombre de usuario'"
-            formControlName="username"
-            name="username"
-          />
-          <mat-icon
-            class="icon-size-5"
-            matPrefix
-            [svgIcon]="'heroicons_solid:user'"
-          ></mat-icon>
-        </mat-form-field>
-
-        <mat-form-field class="flex-auto gt-xs:pl-3">
-          <input
-            matInput
-            [placeholder]="'Correo electrónico'"
-            formControlName="email"
-            name="email"
-          />
-          <mat-icon
-            class="icon-size-5"
-            matPrefix
-            [svgIcon]="'heroicons_solid:mail'"
-          ></mat-icon>
-        </mat-form-field>
-
-        <mat-form-field class="flex-auto gt-xs:pl-3">
-          <input
-            matInput
-            [placeholder]="'Contraseña'"
-            formControlName="newPassword"
-            name="newPassword"
-            [type]="service.hideNewPassword ? 'password' : 'text'"
-          />
-          <mat-icon
-            class="icon-size-5"
-            matPrefix
-            [svgIcon]="'heroicons_solid:key'"
-          ></mat-icon>
-          <button
-            mat-icon-button
-            type="button"
-            matSuffix
-            (click)="service.hideNewPassword = !service.hideNewPassword"
-            [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="service.hideNewPassword"
-          >
-            <mat-icon>{{
-              service.hideNewPassword ? 'visibility_off' : 'visibility'
-            }}</mat-icon>
-          </button>
-          <mat-error *ngIf="newPassword?.invalid">
-            {{ service.getNewPassswordErrorMessage(newPassword) }}</mat-error
-          >
-        </mat-form-field>
-
-        <mat-form-field class="flex-auto gt-xs:pl-3">
-          <input
-            matInput
-            [placeholder]="'Confirmar contraseña'"
-            formControlName="confirmPassword"
-            name="confirmPassword"
-            [type]="service.hideConfirmPassword ? 'password' : 'text'"
-          />
-
-          <mat-icon
-            class="icon-size-5"
-            matPrefix
-            [svgIcon]="'heroicons_solid:key'"
-          ></mat-icon>
-
-          <button
-            mat-icon-button
-            type="button"
-            matSuffix
-            (click)="service.hideConfirmPassword = !service.hideConfirmPassword"
-            [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="service.hideConfirmPassword"
-          >
-            <mat-icon>{{
-              service.hideConfirmPassword ? 'visibility_off' : 'visibility'
-            }}</mat-icon>
-          </button>
-          <mat-error *ngIf="confirmPassword?.invalid">
-            {{
-              service.getCofirmPassswordErrorMessage(confirmPassword)
-            }}</mat-error
-          >
-        </mat-form-field>
+    <form [formGroup]="formGroup" #form="ngForm" (ngSubmit)="onSubmit()">
+      <!-- Section Información Básica -->
+      <div class="w-full">
+        <div class="text-xl">Información Básica</div>
+        <div class="text-secondary">
+          Asigna un nombre de usuario y email como credenciales.
+        </div>
       </div>
-      <div class="flex flex-col gt-xs:flex-row">
-        <mat-form-field class="flex-auto gt-xs:pl-3">
-          <mat-select
-            multiple
-            [placeholder]="'Añadir roles al usuario'"
-            formControlName="roles"
-            name="roles"
-          >
-            <mat-option
-              *ngFor="let role of roles$ | async; trackBy: trackByFn"
-              [value]="role"
-              >{{ role.name }}</mat-option
+      <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
+        <!-- userName -->
+        <div class="sm:col-span-4">
+          <mat-form-field class="w-full">
+            <mat-label>Nombre de usuario</mat-label>
+            <input matInput formControlName="username" name="username" />
+            <mat-icon
+              class="icon-size-5"
+              matPrefix
+              [svgIcon]="'heroicons_solid:user'"
+            ></mat-icon>
+          </mat-form-field>
+        </div>
+
+        <!-- email -->
+        <div class="sm:col-span-4">
+          <mat-form-field class="w-full">
+            <mat-label>Correo electrónico</mat-label>
+            <input matInput formControlName="email" name="email" />
+            <mat-icon
+              class="icon-size-5"
+              matPrefix
+              [svgIcon]="'heroicons_solid:mail'"
+            ></mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- Divider -->
+      <div class="my-10 border-t"></div>
+      <!-- Section  Establecer contraseña-->
+      <div class="w-full">
+        <div class="text-xl">Establecer contraseña</div>
+        <div class="text-secondary">
+          Utiliza una contraseña suficientemente segura.
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
+        <!-- contraseña -->
+        <div class="sm:col-span-4">
+          <mat-form-field class="w-full">
+            <mat-label>Contraseña</mat-label>
+            <input
+              matInput
+              formControlName="newPassword"
+              name="newPassword"
+              [type]="service.hideNewPassword ? 'password' : 'text'"
+            />
+            <mat-icon
+              class="icon-size-5"
+              matPrefix
+              [svgIcon]="'heroicons_solid:key'"
+            ></mat-icon>
+            <button
+              mat-icon-button
+              type="button"
+              matSuffix
+              (click)="service.hideNewPassword = !service.hideNewPassword"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="service.hideNewPassword"
             >
-          </mat-select>
-          <mat-icon
-            class="icon-size-5"
-            matPrefix
-            [svgIcon]="'heroicons_solid:user-group'"
-          ></mat-icon>
-        </mat-form-field>
+              <mat-icon>{{
+                service.hideNewPassword ? 'visibility_off' : 'visibility'
+              }}</mat-icon>
+            </button>
+            <mat-error *ngIf="newPassword?.invalid">
+              {{ service.getNewPassswordErrorMessage(newPassword) }}</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <!-- confirmar contrasña -->
+        <div class="sm:col-span-4">
+          <mat-form-field class="w-full">
+            <mat-label>Confirmar contraseña</mat-label>
+            <input
+              matInput
+              formControlName="confirmPassword"
+              name="confirmPassword"
+              [type]="service.hideConfirmPassword ? 'password' : 'text'"
+            />
+
+            <mat-icon
+              class="icon-size-5"
+              matPrefix
+              [svgIcon]="'heroicons_solid:key'"
+            ></mat-icon>
+
+            <button
+              mat-icon-button
+              type="button"
+              matSuffix
+              (click)="
+                service.hideConfirmPassword = !service.hideConfirmPassword
+              "
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="service.hideConfirmPassword"
+            >
+              <mat-icon>{{
+                service.hideConfirmPassword ? 'visibility_off' : 'visibility'
+              }}</mat-icon>
+            </button>
+            <mat-error *ngIf="confirmPassword?.invalid">
+              {{
+                service.getCofirmPassswordErrorMessage(confirmPassword)
+              }}</mat-error
+            >
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- Divider -->
+      <div class="my-10 border-t"></div>
+
+      <!-- Section -->
+      <div class="w-full">
+        <div class="text-xl">Rol</div>
+        <div class="text-secondary">
+          Asigna un rol o varios roles al usuario.
+        </div>
       </div>
 
-      <div
+      <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
+        <!-- seleccionar role -->
+        <div class="sm:col-span-4">
+          <mat-form-field class="w-full">
+            <mat-select
+              multiple
+              [placeholder]="'Roles'"
+              formControlName="roles"
+              name="roles"
+            >
+              <mat-option
+                *ngFor="let role of roles$ | async; trackBy: trackByFn"
+                [value]="role"
+                >{{ role.name }}</mat-option
+              >
+            </mat-select>
+            <mat-icon
+              class="icon-size-5"
+              matPrefix
+              [svgIcon]="'heroicons_solid:user-group'"
+            ></mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="my-10 border-t"></div>
+
+      <!-- Actions -->
+      <div class="flex items-center justify-end">
+
+        <button mat-stroked-button type="button" (click)="navigateTo()">
+          Cancelar
+        </button>
+        <button
+          class="ml-4"
+          mat-flat-button
+          type="submit"
+          [color]="'primary'"
+          [disabled]="formGroup.invalid"
+        >
+          Guardar
+        </button>
+      </div>
+
+      <!-- <div
         class="flex items-center justify-end border-t -mx-8 mt-8 px-8 py-5 bg-gray-50 dark:bg-gray-700"
       >
         <button mat-button type="button" (click)="navigateTo()">
@@ -158,19 +209,7 @@ import { Role, UserService } from '../../data-access';
         >
           Guardar
         </button>
-      </div>
-
-      <!-- <button
-        mat-button
-        class="submit-section-btn"
-        type="submit"
-        color="primary"
-        [disabled]="formGroup.invalid"
-      >
-        Guardar
-      </button>
-
-      <button mat-button type="button" (click)="navigateTo()">Cancelar</button> -->
+      </div> -->
     </form>
   `,
   styles: [],

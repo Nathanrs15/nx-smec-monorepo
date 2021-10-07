@@ -46,6 +46,9 @@
     "modules-auth": {
       "tags": ["scope:shared"]
     },
+    "modules-cems-history-graph": {
+      "tags": []
+    },
     "modules-claims": {
       "tags": []
     },

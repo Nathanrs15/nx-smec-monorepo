@@ -112,7 +112,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
         ],
       },
       { id: 'smec.redundancy', title: 'Redundancia', type: 'basic' },
-      { id: 'smec.graphs', title: 'Gráficas', type: 'basic' },
+      { id: 'smec.graphs', title: 'Gráficas', type: 'basic', link: 'history-graph' },
       { id: 'smec.cusum', title: 'Gráficos de control', type: 'basic' },
       { id: 'smec.calibration', title: 'Calibración', type: 'basic' },
     ],

@@ -13,54 +13,78 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FuseConfirmationService } from '@smec-monorepo/fuse';
 import { SnackbarService } from '@smec-monorepo/shared';
 import { RolesFeatureService } from '../../../data-access';
 @Component({
   selector: 'role-form',
   template: `
-    <form
-      class="flex flex-col mt-4 px-8 pt-10 bg-card shadow rounded overflow-hidden"
-      [formGroup]="formGroup"
-      #form="ngForm"
-      (ngSubmit)="onSubmit()"
-    >
-      <p class="text-lg font-medium">
-        {{ isAddMode ? 'Añadir' : 'Editar' }} rol
-      </p>
-      <p class="text-secondary mb-6"></p>
-      <div class="flex flex-col gt-xs:flex-row">
-        <mat-form-field class="flex-auto gt-xs:pr-3">
-          <input
-            matInput
-            [placeholder]="'Nombre del rol'"
-            placeholder="Role name"
-            name="name"
-            formControlName="name"
-            required
-          />
-
-          <mat-icon
-            class="icon-size-5"
-            matPrefix
-            [svgIcon]="'heroicons_solid:user-group'"
-          ></mat-icon>
-
-          <button *ngIf="name?.dirty" mat-icon-button matSuffix>
-            <mat-icon>{{ isAddMode ? 'close' : 'restart_alt' }}</mat-icon>
-          </button>
-        </mat-form-field>
+    <form [formGroup]="formGroup" #form="ngForm" (ngSubmit)="onSubmit()">
+      <!-- Section  -->
+      <div class="w-full">
+        <div class="text-xl">{{ isAddMode ? 'Añadir' : 'Editar' }} rol</div>
+        <div class="text-secondary">
+          {{
+            isAddMode
+              ? 'Asignar un nombre al rol.'
+              : 'Cambiar el nombre al rol.'
+          }}
+        </div>
       </div>
 
-      <div
-        class="flex items-center justify-end border-t -mx-8 mt-8 px-8 py-5 bg-gray-50 dark:bg-gray-700"
-      >
-        <button mat-button type="button" (click)="navigateToRoles()">
+      <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
+        <!-- userName -->
+        <div class="sm:col-span-4">
+          <mat-form-field class="w-full">
+            <mat-label>Nombre del rol</mat-label>
+            <input
+              matInput
+              placeholder="Role name"
+              name="name"
+              formControlName="name"
+              required
+            />
+
+            <mat-icon
+              class="icon-size-5"
+              matPrefix
+              [svgIcon]="'heroicons_solid:user-group'"
+            ></mat-icon>
+
+            <button *ngIf="name?.dirty" mat-icon-button matSuffix>
+              <mat-icon>{{ isAddMode ? 'close' : 'restart_alt' }}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="my-10 border-t"></div>
+
+      <!-- Actions -->
+      <div class="flex items-center">
+        <button
+          *ngIf="!isAddMode"
+          type="button"
+          mat-button
+          [color]="'warn'"
+          (click)="deleteRole()"
+        >
+          Delete
+        </button>
+
+        <button
+          class="ml-auto"
+          mat-stroked-button
+          type="button"
+          (click)="navigateToRoles()"
+        >
           Cancelar
         </button>
         <button
-          type="submit"
-          class="px-6 ml-3"
+          class="ml-4"
           mat-flat-button
+          type="submit"
           [color]="'primary'"
           [disabled]="formGroup.invalid"
         >
@@ -76,7 +100,7 @@ export class RoleFormComponent implements OnInit {
   formGroup!: FormGroup;
   formInitialValue!: any;
 
-  returnUrl: string;
+  returnUrl = '/app/roles';
 
   @ViewChild('form') form!: NgForm;
 
@@ -87,8 +111,9 @@ export class RoleFormComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private roleService: RolesFeatureService,
-    private snackbarService: SnackbarService
+    private rolesService: RolesFeatureService,
+    private snackbarService: SnackbarService,
+    private _fuseConfirmationService: FuseConfirmationService
   ) {
     // super();
   }
@@ -102,13 +127,10 @@ export class RoleFormComponent implements OnInit {
     });
 
     if (!this.isAddMode) {
-      this.returnUrl = '../../';
-      this.roleService.getRoleById(this.id).subscribe((role) => {
+      this.rolesService.getRoleById(this.id).subscribe((role) => {
         this.formGroup.patchValue(role);
         this.formInitialValue = this.formGroup.value;
       });
-    } else {
-      this.returnUrl = '../';
     }
   }
 
@@ -123,7 +145,7 @@ export class RoleFormComponent implements OnInit {
   }
 
   navigateToRolePermissions(id: string) {
-    this.router.navigate(['../manage-permissions', id], {
+    this.router.navigate(['/app/roles/manage-permissions', id], {
       relativeTo: this.route,
     });
   }
@@ -132,7 +154,7 @@ export class RoleFormComponent implements OnInit {
     if (this.formGroup.invalid) return;
 
     if (this.isAddMode) {
-      this.roleService.createRole(this.formGroup.value).subscribe((result) => {
+      this.rolesService.createRole(this.formGroup.value).subscribe((result) => {
         this.snackbarService.openSnackBar(
           `Rol ${this.name?.value} añadido`,
           'Aceptar'
@@ -141,7 +163,7 @@ export class RoleFormComponent implements OnInit {
         this.navigateToRolePermissions(result.id);
       });
     } else {
-      this.roleService
+      this.rolesService
         .updateRole(this.id, this.formGroup.value)
         .subscribe(() => {
           this.snackbarService.openSnackBar(
@@ -151,5 +173,34 @@ export class RoleFormComponent implements OnInit {
           this.navigateToRoles();
         });
     }
+  }
+
+  deleteRole() {
+    // Open the confirmation dialog
+    const confirmation = this._fuseConfirmationService.open({
+      title: 'Eliminar rol',
+      message:
+        '¿Estás seguro que quieres eliminar este rol? ¡Esta acción es irreversible!',
+      actions: {
+        confirm: {
+          label: 'Eliminar',
+        },
+      },
+    });
+
+    // Subscribe to the confirmation dialog closed action
+    confirmation.afterClosed().subscribe((result) => {
+      console.log('dialog result', result);
+
+      // If the confirm button pressed...
+      if (result === 'confirmed') {
+        console.log();
+
+        // Delete the contact
+        this.rolesService.deleteRole(this.id).subscribe(() => {
+          this.router.navigate([this.returnUrl]);
+        });
+      }
+    });
   }
 }

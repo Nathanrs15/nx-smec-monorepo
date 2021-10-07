@@ -34,9 +34,9 @@ const routes: Routes = [
   {
     path: 'app',
     component: LayoutComponent,
-    data: {
-      layout: 'classic',
-    },
+    // data: {
+    //   layout: 'classic',
+    // },
     canActivate: [AuthenticationGuard],
 
     resolve: {
@@ -55,6 +55,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('@smec-monorepo/modules/roles').then(
             (m) => m.RolesShellWebModule
+          ),
+      },
+      {
+        path: 'history-graph',
+        loadChildren: () =>
+          import('@smec-monorepo/modules/cems/history-graph').then(
+            (m) => m.HistoryGraphShellWebModule
           ),
       },
     ],

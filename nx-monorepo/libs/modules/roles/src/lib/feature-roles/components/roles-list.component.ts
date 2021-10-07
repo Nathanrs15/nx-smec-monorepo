@@ -14,7 +14,12 @@ import { Role, RolesFeatureService } from '../../data-access';
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'app-roles-list',
   template: `
-    <table mat-table fixedLayout [dataSource]="roles">
+    <table
+      class="min-w-240 overflow-y-visible"
+      mat-table
+      fixedLayout
+      [dataSource]="roles"
+    >
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Rol</th>
         <td mat-cell *matCellDef="let element">{{ element.name }}</td>
@@ -38,11 +43,7 @@ import { Role, RolesFeatureService } from '../../data-access';
         </td>
       </ng-container>
 
-      <tr
-        mat-header-row
-        *matHeaderRowDef="displayedColumns"
-        class="z-10 sticky md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5"
-      ></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
 
@@ -55,14 +56,6 @@ import { Role, RolesFeatureService } from '../../data-access';
         >
           <mat-icon>edit</mat-icon>
           <span>Editar</span>
-        </button>
-        <button
-          mat-menu-item
-          [disabled]="!hasPermission.canDeleteRole"
-          (click)="canDelete(selection.id)"
-        >
-          <mat-icon>delete</mat-icon>
-          <span>Eliminar</span>
         </button>
         <button
           mat-menu-item
@@ -81,30 +74,7 @@ import { Role, RolesFeatureService } from '../../data-access';
 })
 export class RolesListComponent {
   @Input() roles: Role[] = [];
-  @Output() update = new EventEmitter();
+  @Input() hasPermission;
 
   displayedColumns: string[] = ['name', 'id', 'action'];
-
-  hasPermission = this.roleService.checkPermissions;
-
-  constructor(
-    private roleService: RolesFeatureService // private dialogService: ConfirmDialogService
-  ) {}
-
-  // ngOnInit(): void {}
-
-  canDelete(id: string) {
-    // this.dialogService.open(this.roleService.dialogOptions);
-    // return this.dialogService
-    //   .confirmed()
-    //   .pipe(switchMap((confirmed) => (confirmed ? this.deleteRole(id) : EMPTY)))
-    //   .subscribe(() => {
-    //     this.roleService.showDeletedRoleSnackBar();
-    //     this.update.emit();
-    //   });
-  }
-
-  deleteRole(id: string) {
-    return this.roleService.deleteRole(id);
-  }
 }
