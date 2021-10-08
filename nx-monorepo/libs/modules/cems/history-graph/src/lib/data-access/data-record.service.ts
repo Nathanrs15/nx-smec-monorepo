@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { DataRecord } from '.';
 
 @Injectable()
-export class HistoryGraphService {
+export class DataRecordService {
   private baseUrl = 'https://tersa.cemsview.com/api';
   constructor(private http: HttpClient) {}
 

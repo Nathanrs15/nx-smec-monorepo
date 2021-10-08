@@ -1,5 +1,42 @@
 <form [formGroup]="filtersForm">
-    <!-- Section Información Básica -->
+    <!-- Selec chart -->
+    <div class="w-full">
+        <div class="text-xl">Gráficas</div>
+        <div class="text-secondary">Selecciona una gráfica predefinida.</div>
+    </div>
+    <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
+        <div class="sm:col-span-4">
+            <mat-form-field class="w-full">
+                <mat-select [formControlName]="'chart'">
+                    <mat-option *ngFor="let chart of charts" [value]="chart" (click)="setSeries(chart)">
+                        {{chart.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <!-- Select contaminants -->
+    <div class="w-full">
+        <div class="text-xl">Contaminantes</div>
+        <div class="text-secondary">Selecciona un contaminante para graficar.</div>
+    </div>
+    <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
+        <div class="sm:col-span-4">
+            <mat-form-field class="w-full">
+                <mat-select [formControlName]="'series'" multiple>
+                    <mat-option *ngFor="let serie of series" [value]="serie" checked>
+                        {{serie.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <!-- Divider -->
+    <!-- <div class="my-10 border-t"></div> -->
+
+    <!-- Rango de fechas -->
     <div class="w-full">
         <div class="text-xl">Rango de fechas</div>
         <div class="text-secondary">Selecciona el rango de fechas.</div>
@@ -8,17 +45,10 @@
         <div class="sm:col-span-4">
             <mat-form-field class="w-full">
                 <mat-date-range-input [rangePicker]="picker">
-                    <input
-                        matStartDate
-                        placeholder="Start date"
-                        [value]="yesterday"
-                    />
-                    <input matEndDate placeholder="End date" [value]="today" />
+                    <input matStartDate placeholder="Fecha inicio" [formControlName]="'start'" />
+                    <input matEndDate placeholder="Fecha final" [formControlName]="'end'" />
                 </mat-date-range-input>
-                <mat-datepicker-toggle
-                    matSuffix
-                    [for]="picker"
-                ></mat-datepicker-toggle>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-date-range-picker #picker></mat-date-range-picker>
             </mat-form-field>
         </div>
@@ -26,79 +56,36 @@
     <!-- Divider -->
     <div class="my-10 border-t"></div>
 
-    <!-- Tags -->
-    <div class="flex flex-wrap items-center -m-1.5 mt-6">
-        <!-- Tags -->
-        <ng-container *ngIf="measuringComponents.length">
-            <ng-container *ngFor="let item of measuringComponents">
-                <div
-                    class="
-                        flex
-                        items-center
-                        justify-center
-                        px-4
-                        m-1.5
-                        rounded-full
-                        leading-9
-                        text-gray-500
-                        bg-gray-100
-                        dark:text-gray-300 dark:bg-gray-700
-                    "
-                >
-                    <span class="text-md font-medium whitespace-nowrap">
-                        {{ item.title }}
-                    </span>
-                </div>
-            </ng-container>
-        </ng-container>
-    </div>
-
-    <!-- Divider -->
-    <div class="my-10 border-t"></div>
-
     <!-- Eje de valores -->
-    <div class="sm:col-span-4 flex items-center justify-between">
+    <!-- <div class="sm:col-span-4 flex items-center justify-between">
         <div class="flex-auto cursor-pointer" (click)="twoStepToggle.toggle()">
             <div class="leading-6 font-medium">Eje de valores</div>
             <div class="text-md text-secondary">
                 Activa la rejilla en el eje de valores
             </div>
         </div>
-        <mat-slide-toggle
-            class="ml-4"
-            [color]="'primary'"
-            [formControlName]="'twoStep'"
-            #twoStepToggle
-        >
+        <mat-slide-toggle class="ml-4" [color]="'primary'" [formControlName]="'twoStep'" #twoStepToggle>
         </mat-slide-toggle>
-    </div>
+    </div> -->
     <!-- Eje de Fechas -->
-    <div class="sm:col-span-4 flex items-center justify-between">
-        <div
-            class="flex-auto cursor-pointer"
-            (click)="askPasswordChangeToggle.toggle()"
-        >
+    <!-- <div class="sm:col-span-4 flex items-center justify-between">
+        <div class="flex-auto cursor-pointer" (click)="askPasswordChangeToggle.toggle()">
             <div class="leading-6 font-medium">Eje de Fechas</div>
             <div class="text-md text-secondary">
                 Activa la rejilla en el eje de fechas,
             </div>
         </div>
-        <mat-slide-toggle
-            class="ml-4"
-            [color]="'primary'"
-            [formControlName]="'askPasswordChange'"
-            #askPasswordChangeToggle
-        >
+        <mat-slide-toggle class="ml-4" [color]="'primary'" [formControlName]="'askPasswordChange'"
+            #askPasswordChangeToggle>
         </mat-slide-toggle>
-    </div>
-
+    </div> -->
     <!-- Divider -->
-    <div class="my-10 border-t"></div>
+    <!-- <div class="my-10 border-t"></div> -->
 
     <!-- Actions -->
     <div class="flex items-center justify-end">
         <!-- <button mat-stroked-button type="button">Cancel</button> -->
-        <button class="ml-4" mat-flat-button type="button" [color]="'primary'">
+        <button class="ml-4" mat-flat-button type="button" [color]="'primary'" (click)="onSubmitForm()">
             Aceptar
         </button>
     </div>

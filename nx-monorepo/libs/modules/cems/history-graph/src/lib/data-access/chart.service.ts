@@ -1,102 +1,68 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Chart, environment, Serie } from '@smec-monorepo/shared';
-import { combineLatest, Observable } from 'rxjs';
+import {
+    ChartConfiguration,
+    environment,
+    Sensor,
+    SensorService,
+    Serie,
+} from '@smec-monorepo/shared';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { TimeBasedGraphService } from './time-based-graph.service';
-import { delay } from 'rxjs/operators';
+import { ChartData, DataRecord, DataRecordService } from '.';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class ChartService {
-  private baseUrl = environment.baseUrl;
-  _series: string[] = []; // 'CO', 'HCI', 'SO2'
+    private baseUrl = environment.baseUrl;
 
-  constructor(
-    private http: HttpClient,
-    private timeBasedChart: TimeBasedGraphService
-  ) {}
+    constructor(
+        private http: HttpClient,
+        private timeBasedChart: TimeBasedGraphService,
+        private sensorService: SensorService,
+        private dataRecordService: DataRecordService
+    ) {}
 
-  /** API CALLS */
-  getCharts(): Observable<Chart[]> {
-    return this.http.get<Chart[]>(`${this.baseUrl}/charts`);
-  }
+    /** API CALLS */
+    getCharts(): Observable<ChartConfiguration[]> {
+        return this.http.get<ChartConfiguration[]>(`${this.baseUrl}/charts`);
+    }
 
-  getChartById(chartId: number): Observable<Chart> {
-    return this.http.get<Chart>(`${this.baseUrl}/charts/${chartId}`);
-  }
-
-  /** CHART HANDLE */
-
-  setChartDataSource(data: any[]) {
-    this.timeBasedChart.setChartDataSource(data);
-  }
-
-  setSeriesSoruce(sensorName: string) {
-    // this._series.push(sensorName);
-    // this.timeBasedChart.setSeriesSoruce(this._series);
-    // this.generatechartData();
-  }
-
-  getChartSeries() {
-    return this.timeBasedChart.series$;
-  }
-
-  generatechartData(series: Serie[]) {
-    let value = 50;
-    const data = [];
-
-    const dates = this.generate_dates(30);
-
-    for (let i = 0; i < dates.length; i++) {
-      const obj: CHARTDATA = {};
-      obj.date = dates[i];
-      for (let j = 0; j < series.length; j++) {
-        const _serie = series[j];
-        value += Math.round(
-          (Math.random() < 0.5 ? -1 : 1) * Math.random() * 10
+    getChartById(chartId: number): Observable<ChartConfiguration> {
+        return this.http.get<ChartConfiguration>(
+            `${this.baseUrl}/charts/${chartId}`
         );
-
-        obj[_serie.name] = value;
-      }
-      data.push(obj);
     }
 
-    return data;
-  }
-
-  deleteFromSeriesSource(serie: string) {
-    const index = this._series.indexOf(serie);
-
-    if (index >= 0) {
-      this._series.splice(index, 1);
+    getAllSensors(): Observable<Sensor[]> {
+        return this.sensorService.getSensors();
     }
 
-    this.timeBasedChart.setSeriesSoruce(this._series);
-    // this.generatechartData();
-  }
-
-  clearAllSeries() {
-    this._series = [];
-    this.timeBasedChart.setSeriesSoruce(this._series);
-    // this.generatechartData();
-  }
-
-  generate_dates(step: number) {
-    const dt = new Date();
-    const date = dt.getDate();
-
-    dt.setHours(0, 0, 0);
-
-    const rc = [];
-
-    while (dt.getDate() === date) {
-      rc.push(new Date(dt));
-      dt.setMinutes(dt.getMinutes() + step);
+    getSeriesDataRecords(sensorId: number, from: string, to: string) {
+        return this.dataRecordService.getDataRecords(sensorId, from, to);
     }
-    return rc;
-  }
-}
+    /** CHART HANDLE */
 
-export interface CHARTDATA {
-  date?: any;
-  [key: string]: any;
+    setChartDataSource(data: any[]) {
+        this.timeBasedChart.setChartDataSource(data);
+    }
+
+    getChartSeries() {
+        return this.timeBasedChart.series$;
+    }
+
+    formatChartDataRecords(series: Serie[], records: DataRecord[]) {
+        const data: ChartData[] = [];
+        for (let index = 0; index < records.length; index++) {
+            const record = records[index];
+            const obj: ChartData = {};
+            obj.date = record.timestamp;
+            for (let j = 0; j < series.length; j++) {
+                const s = series[j];
+                obj[s.name] = record.averageValue;
+            }
+            data.push(obj);
+        }
+        return data;
+    }
 }

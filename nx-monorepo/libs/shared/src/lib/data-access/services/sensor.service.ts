@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Chart, environment } from '@smec-monorepo/shared';
+import { Sensor } from '../models';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class SensorService {
-  private baseUrl = environment.baseUrl;
+    // private baseUrl = environment.baseUrl;
+    private baseUrl = 'https://tersa.cemsview.com/api';
 
-  constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {}
 
-  getSensors(): Observable<Chart[]> {
-    return this.http.get<Chart[]>(`${this.baseUrl}/sensors`);
-  }
+    getSensors(): Observable<Sensor[]> {
+        return this.http.get<Sensor[]>(`${this.baseUrl}/sensors`);
+    }
 
-  getSensorById(sensorId: number): Observable<Chart[]> {
-    return this.http.get<Chart[]>(`${this.baseUrl}/sensors/${sensorId}`);
-  }
+    getSensorById(sensorId: number): Observable<Sensor[]> {
+        return this.http.get<Sensor[]>(`${this.baseUrl}/sensors/${sensorId}`);
+    }
 }

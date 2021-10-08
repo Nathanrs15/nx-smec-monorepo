@@ -1,7 +1,8 @@
-import { Unit } from "./unit.model";
+import { Unit } from './unit.model';
 
 export interface Sensor {
-  sensorId: number;
-  name: string;
-  unit: Unit;
+    sensorId: number;
+    tag?: string;
+    name: string;
+    unit: Unit;
 }

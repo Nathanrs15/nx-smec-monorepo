@@ -1,53 +1,63 @@
 import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-  ViewEncapsulation,
+    ChangeDetectionStrategy,
+    Component,
+    OnInit,
+    ViewEncapsulation,
 } from '@angular/core';
-import { Chart } from '@smec-monorepo/shared';
+import { ChartConfiguration } from '@smec-monorepo/shared';
 import { Observable, Subject } from 'rxjs';
-import { take, tap } from 'rxjs/operators';
-import { ChartService } from '../../../data-access';
+import { switchMap, take, tap } from 'rxjs/operators';
+import { ChartData, ChartService } from '../../../data-access';
+import * as moment from 'moment';
 
 @Component({
-  templateUrl: `./graph.component.html`,
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: `./graph.component.html`,
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GraphPage implements OnInit {
-  ngUnsubscribe = new Subject<void>();
+    ngUnsubscribe = new Subject<void>();
 
-  chartId = 'historical-chart';
-  chartData: Chart;
-  chartValues: any[];
+    chartId = 'historical-chart';
+    chartConfig: ChartConfiguration;
+    chartData: ChartData[];
 
-  chart$: Observable<Chart>;
+    loadData$: Observable<any | any[]>;
 
-  drawerMode: 'over' | 'side' = 'side';
-  drawerOpened = true;
+    drawerMode: 'over' | 'side' = 'side';
+    drawerOpened = true;
 
-  constructor(private chartService: ChartService) {}
+    constructor(private chartService: ChartService) {}
 
-  ngOnInit(): void {
-    this.chart$ = this.chartService.getChartById(1).pipe(
-      take(1),
-      tap((data) => {
-        this.chartData = data;
-        this.chartValues = this.chartService.generatechartData(data.series);
-      })
-    );
-  }
+    ngOnInit(): void {
+        // this.loadChartDataConfig();
+    }
 
-  addSerie(sensor: string) {
-    if (!sensor) return;
-    this.chartService.setSeriesSoruce(sensor);
-  }
+    loadChartDataConfig(data?) {
+        const formatDate = (date) => moment(date).format('YYYY-MM-DD');
 
-  deleteSerie(serie: string) {
-    this.chartService.deleteFromSeriesSource(serie);
-  }
+        if (!data?.range || !data.chart || !data.series) {
+            return;
+        }
 
-  clearAllSeries() {
-    this.chartService.clearAllSeries();
-  }
+        this.loadData$ = this.chartService
+            .getChartById(data.chart.chartId)
+            .pipe(
+                take(1),
+                switchMap((config) => {
+                    this.chartConfig = config;
+                    return this.chartService.getSeriesDataRecords(
+                        data.series[0].sensor.sensorId,
+                        formatDate(data.range.start),
+                        formatDate(data.range.end)
+                    );
+                }),
+                tap((records) => {
+                    this.chartData = this.chartService.formatChartDataRecords(
+                        this.chartConfig.series,
+                        records
+                    );
+                })
+            );
+    }
 }

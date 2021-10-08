@@ -6,7 +6,8 @@ import * as am4charts from '@amcharts/amcharts4/charts';
 import am4lang_es_ES from '@amcharts/amcharts4/lang/es_ES';
 
 import am4themes_material from '@amcharts/amcharts4/themes/material';
-import { Chart, Serie } from '@smec-monorepo/shared';
+import { ChartConfiguration, Serie } from '@smec-monorepo/shared';
+import { ChartData } from '.';
 // import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 // import am4themes_dark from '@amcharts/amcharts4/themes/dark';
 // import am4themes_dataviz from '@amcharts/amcharts4/themes/dataviz';
@@ -21,10 +22,7 @@ export class TimeBasedGraphService {
 
   //
 
-  loadConfiguration(id: string, values: any[], data: Chart): am4charts.XYChart {
-    console.log(data);
-
-
+  loadConfiguration(id: string, data: ChartData[], conf: ChartConfiguration): am4charts.XYChart {
     am4core.useTheme(am4themes_material);
 
     const container = am4core.create(id, am4core.Container);
@@ -45,7 +43,7 @@ export class TimeBasedGraphService {
     chart.invalidateData();
     chart.nonScalingStroke = true;
     chart.language.locale = am4lang_es_ES;
-    chart.data = values;
+    chart.data = data;
 
     chart.dateFormatter.inputDateFormat = 'MM/dd/yyyy HH:mm:s';
     chart.numberFormatter.numberFormat = '#.00';
@@ -57,7 +55,7 @@ export class TimeBasedGraphService {
     dateAxis.dataFields.date = 'date';
     dateAxis.baseInterval = {
       timeUnit: 'minute',
-      count: data.count,
+      count: 1,
     };
 
     dateAxis.renderer.grid.template.disabled = true;
@@ -73,8 +71,8 @@ export class TimeBasedGraphService {
     valueAxis.renderer.labels.template.disabled = true;
     // valueAxis.min = 0;
 
-    data.series.map((s: Serie) => {
-      console.log(s);
+    conf.series.map((s: Serie) => {
+    //   console.log(s);
 
       const serie = chart.series.push(new am4charts.LineSeries());
       serie.dataFields.valueY = s.name;
