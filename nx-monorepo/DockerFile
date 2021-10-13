@@ -1,0 +1,14 @@
+# stage 1
+# stable nginx version
+FROM nginx:latest
+COPY dist/apps/adminapp /usr/share/nginx/html
+#Copy default nginx configuration
+COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+
+# docker build --pull --rm -f "DockerFile" -t test/frontend:v1 "."
+# docker tag ng-app:v1.1 registry.digitalocean.com/innsmouth/ng-app:v1.1
+# docker push registry.digitalocean.com/innsmouth/ng-app:v1.1
+
+# kubectl set image deployment/ng-deployment ngapp=registry.digitalocean.com/innsmouth/ng-app:v1.1 -n development
+# kubectl rollout status deployment/ng-deployment -n development

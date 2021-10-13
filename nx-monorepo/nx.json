@@ -50,7 +50,7 @@
       "tags": []
     },
     "modules-claims": {
-      "tags": []
+      "tags": ["scope:admin"]
     },
     "modules-roles": {
       "tags": ["scope:admin"]
