@@ -47,7 +47,7 @@
       "tags": ["scope:shared"]
     },
     "modules-cems-history-graph": {
-      "tags": []
+      "tags": ["scope:admin"]
     },
     "modules-claims": {
       "tags": ["scope:admin"]

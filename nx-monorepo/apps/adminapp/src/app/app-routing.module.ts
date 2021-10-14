@@ -9,41 +9,34 @@ import { LayoutComponent } from '@smec-monorepo/layout';
 import { InitialDataResolver } from './app.resolvers';
 
 const routes: Routes = [
-    // {
-    //     path: '',
-    //     component: LayoutComponent,
-    //     data: {
-    //         layout: 'empty',
-    //     },
-    //     children: [
-    //         {
-    //             path: 'sign-in',
-    //             canActivate: [UserIsLoggedGuard],
-    //             loadChildren: () =>
-    //                 import('@smec-monorepo/modules/auth').then(
-    //                     (m) => m.AuthSignInModule
-    //                 ),
-    //         },
-    //         {
-    //             path: 'sign-out',
-    //             loadChildren: () =>
-    //                 import('@smec-monorepo/modules/auth').then(
-    //                     (m) => m.AuthSignOutModule
-    //                 ),
-    //         },
-    //     ],
-    // },
     {
-        path: 'test',
+        path: '',
         component: LayoutComponent,
         data: {
             layout: 'empty',
         },
+        children: [
+            {
+                path: 'sign-in',
+                canActivate: [UserIsLoggedGuard],
+                loadChildren: () =>
+                    import('@smec-monorepo/modules/auth').then(
+                        (m) => m.AuthSignInModule
+                    ),
+            },
+            {
+                path: 'sign-out',
+                loadChildren: () =>
+                    import('@smec-monorepo/modules/auth').then(
+                        (m) => m.AuthSignOutModule
+                    ),
+            },
+        ],
     },
-    /*{
+    {
         path: 'app',
         component: LayoutComponent,
-         canActivate: [AuthenticationGuard],
+        canActivate: [AuthenticationGuard],
 
         resolve: {
             initialData: InitialDataResolver,
@@ -71,8 +64,8 @@ const routes: Routes = [
                     ),
             },
         ],
-    },*/
-    { path: '**', redirectTo: 'test', pathMatch: 'full' },
+    },
+    { path: '**', redirectTo: 'app', pathMatch: 'full' },
 ];
 
 @NgModule({
