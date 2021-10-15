@@ -17,7 +17,7 @@ import { environment } from 'environments/environment';
 export class AuthenticationService {
     authKey = 'auth';
     clientId = 'interactive';
-    baseUrl = environment.baseUrl;
+    baseUrl = environment.authUrl;
 
     constructor(
         private http: HttpClient,

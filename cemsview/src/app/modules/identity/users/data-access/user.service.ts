@@ -29,7 +29,7 @@ import { environment } from 'environments/environment';
 
 @Injectable()
 export class UserService {
-    private baseUrl = environment.baseUrl;
+    private baseUrl = environment.authUrl;
 
     private token: string = jwt_decode(
         this.authService.getAuth()?.token as string

@@ -12,7 +12,7 @@ import {
 
 @Injectable()
 export class PermissionsApiService {
-  private baseUrl = environment.baseUrl;
+  private baseUrl = environment.authUrl;
 
   constructor(private http: HttpClient) {}
 

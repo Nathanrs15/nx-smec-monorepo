@@ -24,10 +24,10 @@ const routes: Routes = [
         data: {
             layout: 'empty',
         },
+        canActivate: [UserIsLoggedGuard],
         children: [
             {
                 path: 'sign-in',
-                canActivate: [UserIsLoggedGuard],
                 loadChildren: () =>
                     import('app/modules/auth').then((m) => m.AuthSignInModule),
             },
@@ -74,6 +74,7 @@ const routes: Routes = [
                         (m) => m.HistoryGraphShellWebModule
                     ),
             },
+            { path: '**', redirectTo: 'history-graph', pathMatch: 'full' },
         ],
     },
     { path: '**', redirectTo: 'app', pathMatch: 'full' },

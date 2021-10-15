@@ -12,7 +12,7 @@ import { AuthenticationService } from '../auth/authentication.service';
 })
 export class UserService {
     private _user: ReplaySubject<User> = new ReplaySubject<User>(1);
-    private baseUrl = environment.baseUrl;
+    private baseUrl = environment.authUrl;
 
     private token: string = jwt_decode(
         this.authService.getAuth()?.token as string

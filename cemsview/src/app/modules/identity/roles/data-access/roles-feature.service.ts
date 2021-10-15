@@ -23,7 +23,7 @@ import { environment } from 'environments/environment';
 
 @Injectable()
 export class RolesFeatureService {
-    private baseUrl = environment.baseUrl;
+    private baseUrl = environment.authUrl;
 
     formNames: string[] = [];
 

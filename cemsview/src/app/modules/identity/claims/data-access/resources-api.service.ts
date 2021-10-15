@@ -8,7 +8,7 @@ import { switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class ResourcesApiService {
-    private baseUrl = environment.baseUrl;
+    private baseUrl = environment.authUrl;
 
     constructor(private http: HttpClient) {}
 

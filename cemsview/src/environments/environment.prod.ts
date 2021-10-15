@@ -1,4 +1,5 @@
 export const environment = {
-    baseUrl: 'https://localhost:51443/api',
+    baseUrl: 'https://tersa.cemsview.com/api',
+    authUrl: 'https://tersa.cemsview.com/auth',
     production: true,
 };
