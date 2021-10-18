@@ -106,7 +106,7 @@ export class RoleFormComponent implements OnInit {
     formGroup!: FormGroup;
     formInitialValue!: any;
 
-    returnUrl = '/app/roles';
+    returnUrl = '/roles';
 
     @ViewChild('form') form!: NgForm;
 
@@ -151,7 +151,7 @@ export class RoleFormComponent implements OnInit {
     }
 
     navigateToRolePermissions(id: string) {
-        this.router.navigate(['/app/roles/manage-permissions', id], {
+        this.router.navigate(['/roles/manage-permissions', id], {
             relativeTo: this.route,
         });
     }

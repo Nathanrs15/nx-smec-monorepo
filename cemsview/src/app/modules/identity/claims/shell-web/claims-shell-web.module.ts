@@ -1,3 +1,4 @@
+/* eslint-disable arrow-parens */
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -10,7 +11,7 @@ const routes: Routes = [
             import('../feature-claims/feature-claims-permissions.module').then(
                 (m) => m.FeatureClaimssModule
             ),
-        data: { permissions: { only: 'Resources.View', redirectTo: '' } },
+        data: { permissions: { only: 'Resources.Edit', redirectTo: '' } },
         canActivate: [NgxPermissionsGuard],
     },
     {

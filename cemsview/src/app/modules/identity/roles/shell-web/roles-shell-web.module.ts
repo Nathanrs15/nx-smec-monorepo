@@ -1,3 +1,4 @@
+/* eslint-disable arrow-parens */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -13,7 +14,7 @@ const routes: Routes = [
         (m) => m.FeatureRolesModule
       ),
     data: {
-      permissions: { only: 'Roles.View', redirectTo: '' },
+      permissions: { only: 'Roles.Edit', redirectTo: '' },
       title: 'Roles',
     },
     canActivate: [NgxPermissionsGuard],
@@ -51,7 +52,7 @@ const routes: Routes = [
         '../feature-role-permissions/feature-roles-permissions.module'
       ).then((m) => m.FeatureRolesPermissionsModule),
     data: {
-      permissions: { only: 'Permissions.View', redirectTo: '' },
+      permissions: { only: 'Permissions.Edit', redirectTo: '' },
       breadcrumb: 'Manage Permissions',
     },
     canActivate: [NgxPermissionsGuard],

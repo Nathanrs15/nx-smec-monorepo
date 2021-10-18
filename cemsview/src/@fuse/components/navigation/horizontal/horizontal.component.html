@@ -6,7 +6,7 @@
         <ng-container *ngIf="(item.hidden && !item.hidden(item)) || !item.hidden">
 
             <!-- Basic -->
-            <ng-container *ngIf="item.type === 'basic'">
+            <ng-container *ngIf="item.type === 'basic'" >
                 <fuse-horizontal-navigation-basic-item
                     class="fuse-horizontal-navigation-menu-item"
                     [item]="item"

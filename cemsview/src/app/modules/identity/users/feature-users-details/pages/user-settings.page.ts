@@ -1,3 +1,4 @@
+/* eslint-disable arrow-parens */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @typescript-eslint/member-ordering */
 import {
@@ -114,7 +115,7 @@ import { takeUntil } from 'rxjs/operators';
                                 <div>
                                     <a
                                         class="whitespace-nowrap text-primary-500"
-                                        [routerLink]="['/app/users']"
+                                        [routerLink]="['/users']"
                                         >Usuarios</a
                                     >
                                 </div>

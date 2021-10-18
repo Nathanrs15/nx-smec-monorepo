@@ -13,7 +13,7 @@ import { FuseUtilsModule } from '@fuse/services/utils/utils.module';
         FuseMediaWatcherModule,
         FuseSplashScreenModule,
         FuseTailwindConfigModule,
-        FuseUtilsModule
+        FuseUtilsModule,
     ],
     providers: [
         {

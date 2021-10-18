@@ -67,7 +67,7 @@ import { Resource } from 'app/modules/identity/roles/data-access';
                     [disabled]="!canEditResources"
                 >
                     <mat-icon>settings</mat-icon>
-                    <span>Edit resource</span>
+                    <span>Editar recurso</span>
                 </button>
             </ng-template>
         </mat-menu>

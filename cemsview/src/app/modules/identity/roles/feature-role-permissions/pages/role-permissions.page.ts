@@ -24,7 +24,7 @@ import { Resource, Role, RolesFeatureService } from '../../data-access';
                     <div>
                       <a
                         class="whitespace-nowrap text-primary-500"
-                        [routerLink]="['/app/roles']"
+                        [routerLink]="['/roles']"
                         >Roles</a
                       >
                     </div>

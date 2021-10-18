@@ -44,7 +44,6 @@ export class AuthenticationService {
         return this.http.post<TokenResponse>(url, data, { headers }).pipe(
             map((res: TokenResponse) => {
                 const token = res && res.token;
-                console.log('token', token);
                 if (token) {
                     this.setAuth(res);
                     localStorage.setItem('currentUser', email);
@@ -59,7 +58,7 @@ export class AuthenticationService {
         this.setAuth(null);
         this.permissionsService.flushPermissions();
         localStorage.removeItem('currentUser');
-        // this.router.navigate(['login']);
+
         return true;
     }
 

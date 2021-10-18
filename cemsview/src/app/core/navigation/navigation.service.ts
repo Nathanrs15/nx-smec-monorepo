@@ -109,30 +109,12 @@ export const defaultNavigation: FuseNavigationItem[] = [
         icon: 'heroicons_outline:menu',
         children: [
             /* { id: 'smec.real-time', title: 'Tiempo real', type: 'basic' },*/
-            /*{
-                id: 'smec.historical',
-                title: 'Historicos',
-                type: 'collapsable',
-                children: [
-                    { id: 'smec.first', title: '10 minutales', type: 'basic' },
-                    {
-                        id: 'smec.second',
-                        title: 'Semi horarios',
-                        type: 'basic',
-                    },
-                    { id: 'smec.third', title: 'Horario', type: 'basic' },
-                    { id: 'smec.fourth', title: 'Diario', type: 'basic' },
-                ],
-            },*/
-            /* { id: 'smec.redundancy', title: 'Redundancia', type: 'basic' },*/
             {
                 id: 'smec.graphs',
                 title: 'Gráficas',
                 type: 'basic',
                 link: 'history-graph',
             },
-            /* { id: 'smec.cusum', title: 'Gráficos de control', type: 'basic' },*/
-            /* { id: 'smec.calibration', title: 'Calibración', type: 'basic' },*/
         ],
     },
     {
@@ -141,6 +123,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
         subtitle: 'Ajustes del sistema',
         type: 'group',
         icon: 'heroicons_outline:menu',
+        meta: ['Users.Edit', 'Roles.Edit', 'Resources.Edit'],
         children: [
             {
                 id: 'settings.users',
@@ -180,6 +163,7 @@ export const compactNavigation: FuseNavigationItem[] = [
         tooltip: 'Ajustes del sistema',
         type: 'aside',
         icon: 'heroicons_outline:menu',
+        meta: ['Users.Edit', 'Roles.Edit', 'Resources.Edit'],
         children: [],
     },
 ];
@@ -194,6 +178,7 @@ export const futuristicNavigation: FuseNavigationItem[] = [
         id: 'settings',
         title: 'Ajustes',
         type: 'aside',
+        meta: ['Users.Edit', 'Roles.Edit', 'Resources.Edit'],
         children: [],
     },
 ];
@@ -210,6 +195,7 @@ export const horizontalNavigation: FuseNavigationItem[] = [
         title: 'Ajustes',
         type: 'group',
         icon: 'heroicons_outline:menu',
+        meta: ['Users.Edit', 'Roles.Edit', 'Resources.Edit'],
         children: [],
     },
 ];

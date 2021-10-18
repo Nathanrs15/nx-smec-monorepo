@@ -17,7 +17,7 @@ import { ActivatedRoute } from '@angular/router';
                             <div>
                                 <a
                                     class="whitespace-nowrap text-primary-500"
-                                    [routerLink]="['/app/permisos']"
+                                    [routerLink]="['/resources']"
                                     >Recursos</a
                                 >
                             </div>

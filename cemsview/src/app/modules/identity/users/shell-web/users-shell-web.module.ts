@@ -1,3 +1,4 @@
+/* eslint-disable arrow-parens */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -11,7 +12,7 @@ const routes: Routes = [
                 (m) => m.FeatureUsersModule
             ),
         data: {
-            permissions: { only: 'Users.View', redirectTo: '' },
+            permissions: { only: 'Users.Edit', redirectTo: '' },
             title: 'Usuarios',
         },
         canActivate: [NgxPermissionsGuard],

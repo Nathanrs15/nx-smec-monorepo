@@ -37,7 +37,7 @@ const MODULES = [
     AuthModule,
     IconsModule,
     TranslocoCoreModule,
-    NgxPermissionsModule.forRoot(),
+    // NgxPermissionsModule.forRoot(),
 ];
 
 @NgModule({

@@ -14,7 +14,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
                             <div>
                                 <a
                                     class="whitespace-nowrap text-primary-500"
-                                    [routerLink]="['/app/users']"
+                                    [routerLink]="['/users']"
                                     >Usuarios</a
                                 >
                             </div>

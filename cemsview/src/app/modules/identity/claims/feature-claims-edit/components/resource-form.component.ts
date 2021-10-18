@@ -193,6 +193,6 @@ export class ResourceFormComponent implements OnInit {
     }
 
     navigateTo() {
-        this.router.navigate(['app/resources']);
+        this.router.navigate(['/resources']);
     }
 }

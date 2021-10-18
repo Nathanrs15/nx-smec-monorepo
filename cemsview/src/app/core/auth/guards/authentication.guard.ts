@@ -1,51 +1,86 @@
 import { Injectable } from '@angular/core';
-import { Router, CanActivate } from '@angular/router';
+import {
+    Router,
+    CanActivate,
+    RouterStateSnapshot,
+    ActivatedRouteSnapshot,
+    CanActivateChild,
+    CanLoad,
+    UrlSegment,
+    UrlTree,
+} from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { NgxPermissionsService } from 'ngx-permissions';
+import { Route } from '@angular/compiler/src/core';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root',
 })
-export class AuthenticationGuard implements CanActivate {
+export class AuthenticationGuard
+    implements CanActivate, CanActivateChild, CanLoad
+{
     constructor(
-        private router: Router,
+        private _router: Router,
         private permissionsService: NgxPermissionsService,
-        private authService: AuthenticationService
+        private _authService: AuthenticationService
     ) {}
 
-    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-    canActivate() {
-        if (!this.authService.isLoggedIn()) {
-            this.router.navigate(['sign-in']);
-            return false;
-        }
-
-        const token = this.authService.getDecodedToken();
-
-        this.permissionsService.flushPermissions();
-        if (token && Array.isArray(token.permissions)) {
-            this.permissionsService.loadPermissions(token.permissions);
-        } else {
-            this.permissionsService.loadPermissions([...token?.permissions]);
-        }
-        return true;
+    canActivate(
+        route: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot
+    ): Observable<boolean> | Promise<boolean> | boolean {
+        const redirectUrl = state.url === '/sign-out' ? '/' : state.url;
+        return this._check(redirectUrl);
     }
-}
 
-@Injectable({
-    providedIn: 'root',
-})
-export class UserIsLoggedGuard implements CanActivate {
-    constructor(
-        private router: Router,
-        private authService: AuthenticationService
-    ) {}
+    canActivateChild(
+        route: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot
+    ):
+        | Observable<boolean | UrlTree>
+        | Promise<boolean | UrlTree>
+        | boolean
+        | UrlTree {
+        const redirectUrl = state.url === '/sign-out' ? '/' : state.url;
+        return this._check(redirectUrl);
+    }
 
-    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-    canActivate() {
-        if (this.authService.isLoggedIn()) {
-            this.router.navigate(['app']);
-        }
-        return true;
+    canLoad(
+        route: Route,
+        segments: UrlSegment[]
+    ): Observable<boolean> | Promise<boolean> | boolean {
+        return this._check('/');
+    }
+
+    private _check(redirectURL: string): Observable<boolean> {
+        return of(this._authService.isLoggedIn()).pipe(
+            switchMap((authenticated) => {
+                if (!authenticated) {
+                    // Redirect to the sign-in page
+                    this._router.navigate(['sign-in'], {
+                        queryParams: { redirectURL },
+                    });
+
+                    // prevent access
+                    return of(false);
+                }
+
+                const token = this._authService.getDecodedToken();
+
+                this.permissionsService.flushPermissions();
+                if (token && Array.isArray(token.permissions)) {
+                    this.permissionsService.loadPermissions(token.permissions);
+                } else {
+                    this.permissionsService.loadPermissions([
+                        ...token?.permissions,
+                    ]);
+                }
+
+                // allow access
+                return of(true);
+            })
+        );
     }
 }
